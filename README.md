@@ -1,0 +1,2 @@
+# itstatics
+it static
