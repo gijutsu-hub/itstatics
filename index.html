@@ -1,473 +1,337 @@
 <!DOCTYPE html>
 
-<html lang="en">
-<head>
+<html lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>IT'S STATIC — Break the Static. Stay Ecstatic.</title>
-
-<!-- ─── SEO Meta Tags ─── -->
-<meta name="description" content="IT'S STATIC is the social hangout app for Gen Z and young adults. Drop a pin, rally your squad, and turn boring nights into legendary memories. Join the waitlist now."/>
-<meta name="keywords" content="social hangout app, meet up with friends, things to do tonight, nightlife app, local events app, squad meetup, Gen Z social app, find friends near me, city exploration app, IRL meetups, drop a pin, activity finder, spontaneous hangout, social discovery app, youth social network, group hangout planner, local nightlife, fitness meetup, dining with friends, hobby groups near me"/>
-<meta name="robots" content="index, follow"/>
-<meta name="author" content="IT'S STATIC"/>
-<link rel="canonical" href="https://itstatic.space/"/>
-
-<!-- ─── Open Graph (Facebook / LinkedIn / WhatsApp) ─── -->
-<meta property="og:type" content="website"/>
-<meta property="og:url" content="https://itstatic.space/"/>
-<meta property="og:title" content="IT'S STATIC — Break the Static. Stay Ecstatic."/>
-<meta property="og:description" content="Drop a pin. Rally the squad. Turn boring into brilliant. IT'S STATIC is the app that gets your crew off the couch and into the city."/>
-<meta property="og:image" content="https://itstatic.space/og-cover.jpg"/>
-<meta property="og:image:width" content="1200"/>
-<meta property="og:image:height" content="630"/>
-<meta property="og:site_name" content="IT'S STATIC"/>
-<meta property="og:locale" content="en_US"/>
-
-<!-- ─── Twitter / X Card ─── -->
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:site" content="@itsstatic"/>
-<meta name="twitter:creator" content="@itsstatic"/>
-<meta name="twitter:title" content="IT'S STATIC — Break the Static. Stay Ecstatic."/>
-<meta name="twitter:description" content="Drop a pin. Rally the squad. Turn boring into brilliant. Join the waitlist 🔥"/>
-<meta name="twitter:image" content="https://itstatic.space/og-cover.jpg"/>
-
-<!-- ─── Structured Data (JSON-LD) ─── -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "MobileApplication",
-  "name": "IT'S STATIC",
-  "description": "Social hangout app for Gen Z — drop a pin, rally your squad, and make IRL memories across nightlife, dining, fitness, and hobbies.",
-  "operatingSystem": "iOS, Android",
-  "applicationCategory": "SocialNetworkingApplication",
-  "offers": { "@type": "Offer", "price": "0" },
-  "url": "https://itstatic.space/",
-  "sameAs": [
-    "https://instagram.com/itsstatic",
-    "https://tiktok.com/@itsstatic",
-    "https://twitter.com/itsstatic"
-  ]
-}
-</script>
-
+<title>IT'S STATIC - THE URBAN RESISTANCE</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&amp;family=Quicksand:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
 <style>
-  .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
-  .sticker-border { border: 4px solid #1b1b1e; }
-  .sticker-shadow { box-shadow: 6px 6px 0px 0px #1b1b1e; }
-  .sticker-button:hover { transform: translate(4px, 4px); box-shadow: 0px 0px 0px 0px #1b1b1e; }
-  .bg-doodle-pattern {
-    background-image: radial-gradient(circle at 20px 20px, #ffafd2 2px, transparent 0);
-    background-size: 40px 40px;
-  }
-
-  /* ─── Hashtag pill ─── */
-  .hashtag-pill {
-    display: inline-block;
-    background: #fff;
-    border: 3px solid #1b1b1e;
-    box-shadow: 3px 3px 0 #1b1b1e;
-    border-radius: 999px;
-    padding: 4px 14px;
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 700;
-    font-size: 13px;
-    color: #1b1b1e;
-    transition: transform .15s, box-shadow .15s;
-    cursor: default;
-    white-space: nowrap;
-  }
-  .hashtag-pill:hover { transform: translate(2px,2px); box-shadow: 1px 1px 0 #1b1b1e; }
-  .hashtag-pill.pink  { background: #ffd8e7; }
-  .hashtag-pill.yellow{ background: #ffe24c; }
-  .hashtag-pill.blue  { background: #c0e8ff; }
-  .hashtag-pill.purple{ background: #e9d5ff; }
-  .hashtag-pill.green { background: #d1fae5; }
-
-  /* ─── Hashtag marquee ─── */
-  @keyframes marquee-ltr { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-  @keyframes marquee-rtl { from { transform: translateX(-50%); } to { transform: translateX(0); } }
-  .marquee-track { display: flex; width: max-content; gap: 12px; align-items: center; }
-  .marquee-ltr { animation: marquee-ltr 28s linear infinite; }
-  .marquee-rtl { animation: marquee-rtl 28s linear infinite; }
-  .marquee-wrap { overflow: hidden; width: 100%; position: relative; }
-  .marquee-wrap::before,
-  .marquee-wrap::after {
-    content: '';
-    position: absolute;
-    top: 0; bottom: 0;
-    width: 80px;
-    z-index: 2;
-    pointer-events: none;
-  }
-  .marquee-wrap::before { left: 0; background: linear-gradient(to right, #fbf8fc, transparent); }
-  .marquee-wrap::after  { right: 0; background: linear-gradient(to left, #fbf8fc, transparent); }
-</style>
-<script id="tailwind-config">
-  tailwind.config = {
-    darkMode: "class",
-    theme: {
-      extend: {
-        colors: {
-          "on-primary": "#ffffff", "secondary-container": "#7ed4fd",
-          "on-primary-fixed-variant": "#811d57", "on-secondary-fixed-variant": "#004d66",
-          "inverse-surface": "#303033", "tertiary-fixed-dim": "#e2c62d",
-          "tertiary-fixed": "#ffe24c", "inverse-on-surface": "#f3f0f4",
-          "on-secondary": "#ffffff", "on-surface-variant": "#544249",
-          "tertiary": "#6d5e00", "error-container": "#ffdad6",
-          "surface-container": "#f0edf1", "surface-tint": "#9f376f",
-          "outline-variant": "#d9c0c9", "on-primary-fixed": "#3d0025",
-          "surface-container-highest": "#e4e1e6", "primary": "#9f376f",
-          "on-secondary-container": "#005b78", "on-surface": "#1b1b1e",
-          "surface-container-high": "#eae7eb", "on-tertiary": "#ffffff",
-          "on-tertiary-fixed-variant": "#524600", "secondary": "#006686",
-          "inverse-primary": "#ffafd2", "error": "#ba1a1a",
-          "primary-fixed": "#ffd8e7", "on-background": "#1b1b1e",
-          "surface-variant": "#e4e1e6", "background": "#fbf8fc",
-          "surface-dim": "#dcd9dd", "surface-container-low": "#f6f2f7",
-          "secondary-fixed": "#c0e8ff", "surface": "#fbf8fc",
-          "on-error": "#ffffff", "tertiary-container": "#c7ad07",
-          "outline": "#877179", "primary-container": "#ff85c1",
-          "on-primary-container": "#791651", "primary-fixed-dim": "#ffafd2",
-          "on-secondary-fixed": "#001e2b", "surface-container-lowest": "#ffffff",
-          "on-tertiary-fixed": "#211b00", "surface-bright": "#fbf8fc",
-          "on-error-container": "#93000a", "secondary-fixed-dim": "#7bd1fa",
-          "on-tertiary-container": "#4c4100"
-        },
-        borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" },
-        spacing: {
-          "gutter": "24px", "stack-lg": "48px", "margin-mobile": "16px",
-          "unit": "8px", "margin-desktop": "64px", "stack-md": "24px", "stack-sm": "12px"
-        },
-        fontFamily: {
-          "body-lg": ["Quicksand"], "display-lg": ["Bricolage Grotesque"],
-          "headline-md": ["Bricolage Grotesque"], "headline-lg": ["Bricolage Grotesque"],
-          "body-md": ["Quicksand"], "headline-lg-mobile": ["Bricolage Grotesque"],
-          "label-lg": ["Quicksand"], "label-sm": ["Quicksand"]
-        },
-        fontSize: {
-          "body-lg": ["18px", { lineHeight: "28px", fontWeight: "600" }],
-          "display-lg": ["56px", { lineHeight: "64px", letterSpacing: "-0.02em", fontWeight: "800" }],
-          "headline-md": ["24px", { lineHeight: "32px", fontWeight: "700" }],
-          "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "700" }],
-          "body-md": ["16px", { lineHeight: "24px", fontWeight: "500" }],
-          "headline-lg-mobile": ["28px", { lineHeight: "36px", fontWeight: "700" }],
-          "label-lg": ["14px", { lineHeight: "20px", letterSpacing: "0.02em", fontWeight: "700" }],
-          "label-sm": ["12px", { lineHeight: "16px", fontWeight: "700" }]
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
-      }
-    }
-  }
-</script>
+        /* Pop-Resistance Brutalist Styles */
+        .sticker-border {
+            border: 4px solid #1b1b1e;
+        }
+        .sticker-shadow {
+            box-shadow: 8px 8px 0px 0px #1b1b1e;
+        }
+        .pop-gradient-1 {
+            background: linear-gradient(135deg, #ff85c1 0%, #ffd8e7 100%);
+        }
+        .pop-gradient-2 {
+            background: linear-gradient(135deg, #7ed4fd 0%, #c0e8ff 100%);
+        }
+        .pop-gradient-3 {
+            background: linear-gradient(135deg, #c7ad07 0%, #ffe24c 100%);
+        }
+        /* 3D Tactile Button */
+        .tactile-button {
+            background: #ff85c1;
+            border: 4px solid #1b1b1e;
+            box-shadow: 0px 8px 0px 0px #1b1b1e;
+            transition: all 0.1s ease;
+            transform: translateY(-4px);
+        }
+        .tactile-button:active {
+            transform: translateY(0px);
+            box-shadow: 0px 0px 0px 0px #1b1b1e;
+        }
+        .bg-pop-dots {
+            background-color: #fbf8fc;
+            background-image: radial-gradient(#9f376f 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+        .floating-sticker {
+            transition: transform 0.3s ease-out;
+        }
+        .floating-sticker:hover {
+            transform: scale(1.02) rotate(-1deg);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#7ed4fd",
+                        "on-primary-fixed-variant": "#811d57",
+                        "on-secondary-fixed-variant": "#004d66",
+                        "inverse-surface": "#303033",
+                        "tertiary-fixed-dim": "#e2c62d",
+                        "tertiary-fixed": "#ffe24c",
+                        "inverse-on-surface": "#f3f0f4",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#544249",
+                        "tertiary": "#6d5e00",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#f0edf1",
+                        "surface-tint": "#9f376f",
+                        "outline-variant": "#d9c0c9",
+                        "on-primary-fixed": "#3d0025",
+                        "surface-container-highest": "#e4e1e6",
+                        "primary": "#9f376f",
+                        "on-secondary-container": "#005b78",
+                        "on-surface": "#1b1b1e",
+                        "surface-container-high": "#eae7eb",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#524600",
+                        "secondary": "#006686",
+                        "inverse-primary": "#ffafd2",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#ffd8e7",
+                        "on-background": "#1b1b1e",
+                        "surface-variant": "#e4e1e6",
+                        "background": "#fbf8fc",
+                        "surface-dim": "#dcd9dd",
+                        "surface-container-low": "#f6f2f7",
+                        "secondary-fixed": "#c0e8ff",
+                        "surface": "#fbf8fc",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#c7ad07",
+                        "outline": "#877179",
+                        "primary-container": "#ff85c1",
+                        "on-primary-container": "#791651",
+                        "primary-fixed-dim": "#ffafd2",
+                        "on-secondary-fixed": "#001e2b",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#211b00",
+                        "surface-bright": "#fbf8fc",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#7bd1fa",
+                        "on-tertiary-container": "#4c4100"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "stack-lg": "48px",
+                        "margin-mobile": "16px",
+                        "unit": "8px",
+                        "margin-desktop": "64px",
+                        "stack-md": "24px",
+                        "stack-sm": "12px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Quicksand"],
+                        "display-lg": ["Bricolage Grotesque"],
+                        "headline-md": ["Bricolage Grotesque"],
+                        "headline-lg": ["Bricolage Grotesque"],
+                        "body-md": ["Quicksand"],
+                        "headline-lg-mobile": ["Bricolage Grotesque"],
+                        "label-lg": ["Quicksand"],
+                        "label-sm": ["Quicksand"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "display-lg": ["56px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-
-<body class="bg-background text-on-background font-body-lg min-h-screen flex flex-col">
-
-<!-- ══════════ TOP APP BAR ══════════ -->
-<header class="bg-background w-full top-0 sticky z-50 border-b-4 border-on-surface shadow-[4px_4px_0px_0px_rgba(27,27,30,1)]">
-  <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 w-full max-w-full mx-auto">
-    <div class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary uppercase tracking-tighter">
-      IT'S STATIC
-    </div>
-    <button class="bg-primary-container text-on-primary-container sticker-border sticker-shadow sticker-button px-6 py-3 font-label-lg rounded-full transition-all">
-      Join the Waitlist
-    </button>
-  </div>
-</header>
-
-<!-- ══════════ HERO ══════════ -->
-<main class="flex-grow">
-<section class="bg-doodle-pattern bg-primary-fixed-dim/20 py-stack-lg px-margin-mobile md:px-margin-desktop overflow-hidden border-b-4 border-on-surface">
-  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-gutter">
-    <div class="md:w-1/2 flex flex-col gap-stack-md z-10">
-      <h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface">
-        IT'S <span class="text-primary bg-tertiary-fixed px-2 sticker-border sticker-shadow inline-block transform -rotate-2">ECSTATIC.</span>
-      </h1>
-      <h2 class="font-headline-md text-headline-md text-on-surface-variant">Break the Static</h2>
-      <p class="font-body-lg text-body-lg max-w-lg">
-        Tired of the same old routine? Drop a pin, rally the squad, and turn boring into brilliant. Your city is waiting to be explored.
-      </p>
-
-      <!-- ── Inline hashtag cluster ── -->
-      <div class="flex flex-wrap gap-2 mt-1" aria-label="Popular hashtags">
-        <span class="hashtag-pill pink">#ItsStatic</span>
-        <span class="hashtag-pill yellow">#StayEcstatic</span>
-        <span class="hashtag-pill blue">#SquadGoals</span>
-        <span class="hashtag-pill purple">#IRLVibes</span>
-        <span class="hashtag-pill green">#DropAPin</span>
-        <span class="hashtag-pill pink">#MeetIRL</span>
-        <span class="hashtag-pill yellow">#CityLife</span>
-      </div>
-
-      <div>
-        <button class="bg-tertiary-fixed text-on-tertiary-fixed sticker-border sticker-shadow sticker-button px-8 py-4 font-headline-md rounded-xl inline-flex items-center gap-2 transition-all">
-          JOIN THE SQUAD
-          <span class="material-symbols-outlined">arrow_forward</span>
+<body class="bg-pop-dots text-on-background font-body-lg min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-secondary-container w-full top-0 sticky z-50 border-b-8 border-on-surface shadow-[0px_8px_0px_0px_rgba(27,27,30,1)]">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 w-full max-w-full mx-auto">
+<div class="flex items-center gap-4">
+<img alt="Mascot" class="w-14 h-14 rounded-full sticker-border hidden md:block bg-white" src="https://lh3.googleusercontent.com/aida/ADBb0ui0V5hyJ4LKbmlRdKH5X_RqRCugYELRGY8eBAIvuLu429nejk93_NBDXzDMwuB4XxOHV1hzHSp1x7Clz2vyVMABBenUmmIqLUaWrA9LHnyNUQ63k7yK6QlRq3FJZAQCU3Y36nTxrE4zVrl17cdBxjPRG2FgkAS8qI4wRtBiiMrfY90CPMTsmHPulP-vqdhGURM8ugNzC8V2yQ1k1PZ2dUcwY0TMFWfWtHKo_Liz1v_-nbSMrXRbRHwyJnM"/>
+<img alt="IT'S STATIC" class="h-12 md:h-16 filter drop-shadow-[2px_2px_0px_#000]" src="https://lh3.googleusercontent.com/aida/ADBb0uhqB2RSMzGaKnMznnykCI_3KjTl3OfTCYXSIgIhCtKhCVmo5FW8eLo22NLSIB_6alM_gJq2kkgsYuJROPspSSpgI1c2IOxpAeYOjO6SGJON2l3fCMeS_oARBEskmcp4pydRib_kXYoDbjUsxx0ZtfCB0qEDA5o1LTxCr6VlYmGaadxQV3XV-dw1a6S8kCjM89pWoG-CuqR1ZeSpTYpHwzdBVdpDIMmvUKbJwKPH2Vq_VrR6s5ShN7jU0Io"/>
+</div>
+<button class="tactile-button bg-primary-container text-on-primary-container px-8 py-3 font-display-lg text-xl rounded-xl uppercase">
+            ENLIST
         </button>
-      </div>
-    </div>
-
-    <div class="md:w-1/2 w-full mt-stack-lg md:mt-0 relative">
-      <div class="aspect-square bg-secondary-fixed rounded-[3rem] sticker-border sticker-shadow relative overflow-hidden transform rotate-3">
-        <img alt="Cartoon Brutalist illustration of a diverse group of ecstatic friends jumping and cheering around a giant smartphone showing a heart location pin." class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBspCG7im3e1GFO0dmTorBv7zOsWJGUKgP-fOfvEeJOCjfaYv3ym_-4roKGt4olIQOyak2pQYHg3YwX9E29X3GjewhU2yZMR81bsqWGLfvLxq_W0wovmgm7fzNiaa37qhTfSytkSnEL7Y3uq0Yd6qTJt-2lexoAdf2Zts8dIVLa1xBoZRW8s6cIBCfRMQa8ruxt0R6OJW89-QNIdmjINAeYK6592F3rij1defigRA4BPefVr3ZfOTE7S-r9XzZIMMBudzygsCgoir4"/>
-      </div>
-      <div class="absolute -top-10 -right-10 bg-primary-container w-24 h-24 rounded-full sticker-border sticker-shadow flex items-center justify-center animate-bounce">
-        <span class="material-symbols-outlined text-4xl">star</span>
-      </div>
-    </div>
-  </div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow">
+<!-- Hero / Manifesto Section -->
+<section class="py-stack-lg px-margin-mobile md:px-margin-desktop overflow-hidden border-b-8 border-on-surface relative">
+<div class="max-w-7xl mx-auto z-10 relative">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7 flex flex-col gap-stack-md">
+<div class="inline-block bg-tertiary-fixed text-on-tertiary-fixed px-6 py-2 sticker-border sticker-shadow transform -rotate-2 font-display-lg text-2xl uppercase tracking-tighter">
+                    MANIFESTO 001: THE URBAN RESISTANCE
+                </div>
+<h1 class="font-display-lg text-6xl md:text-8xl text-on-surface leading-[0.9] tracking-tighter uppercase">
+                    DON'T JUST <span class="text-primary">EXIST.</span><br/>
+<span class="bg-secondary-container px-4 sticker-border sticker-shadow inline-block transform rotate-1 mt-2">RESIST THE STATIC.</span>
+</h1>
+<div class="bg-white p-8 sticker-border sticker-shadow transform rotate-1 max-w-2xl relative">
+<div class="absolute -top-10 -right-10 w-24 h-24 hidden lg:block transform -rotate-12">
+<img alt="pop mascot" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0ui0V5hyJ4LKbmlRdKH5X_RqRCugYELRGY8eBAIvuLu429nejk93_NBDXzDMwuB4XxOHV1hzHSp1x7Clz2vyVMABBenUmmIqLUaWrA9LHnyNUQ63k7yK6QlRq3FJZAQCU3Y36nTxrE4zVrl17cdBxjPRG2FgkAS8qI4wRtBiiMrfY90CPMTsmHPulP-vqdhGURM8ugNzC8V2yQ1k1PZ2dUcwY0TMFWfWtHKo_Liz1v_-nbSMrXRbRHwyJnM"/>
+</div>
+<p class="font-display-lg text-2xl text-on-surface leading-tight mb-6">
+                        THE CITY IS SCREAMING. ALGORITHMS DICTATE YOUR MOVEMENT. WE ARE HERE FOR THE SURVIVAL OF THE SOCIALLY LITERATE.
+                    </p>
+<p class="font-body-md text-lg text-on-surface-variant italic font-bold uppercase tracking-wide">
+                        Unpacking the digital sludge. Reclaiming the asphalt. Dropping pins, breaking cycles.
+                    </p>
+</div>
+<div class="flex flex-wrap gap-6 mt-8">
+<button class="tactile-button bg-tertiary-fixed text-on-tertiary-fixed px-12 py-6 font-display-lg text-2xl rounded-2xl flex items-center gap-3">
+                        JOIN THE SQUAD
+                        <span class="material-symbols-outlined text-3xl">bolt</span>
+</button>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="aspect-square pop-gradient-2 rounded-[40px] sticker-border sticker-shadow relative overflow-hidden transform rotate-3 floating-sticker">
+<img alt="Character Group" class="w-full h-full object-cover mix-blend-multiply opacity-90" src="https://lh3.googleusercontent.com/aida/ADBb0uirIUHId2vWy_ZuDIKru2r4_Fu07vZ2L2jPDBlqnH4G6hYQ_MQ4Lgmktgtt8L7upxugiN4VEth6s4AE7ajqOlQSTxTOp5sB3GJ7m4N6NaieAgcYpMxtt1xeh2LfP_HZ3EgCK25JvKGUYdvRBJAkoBnnWozN_TDG0CU53N9uSCJ2b2OwvU_XU7Xhrsot_lUsHlETw_qZPoZI0S5MDQIYeKxKDc71BfzNxlu2DzsQR_EDgRGQUbCn4hYk08o"/>
+</div>
+<div class="absolute -top-12 -right-6 bg-primary-container p-4 sticker-border sticker-shadow transform -rotate-12 font-display-lg text-4xl text-on-primary-container z-20">
+                    ECSTATIC!
+                </div>
+<div class="absolute -bottom-10 -left-6 bg-on-surface text-secondary-container p-4 sticker-border sticker-shadow transform rotate-6 font-display-lg text-2xl z-20 uppercase">
+                    NO BOTS allowed.
+                </div>
+</div>
+</div>
+</div>
 </section>
-
-<!-- ══════════ HASHTAG MARQUEE BAND ══════════ -->
-<section class="py-5 border-b-4 border-on-surface bg-inverse-primary/40 overflow-hidden" aria-label="Trending hashtags">
-  <!-- Row 1 — left to right -->
-  <div class="marquee-wrap mb-3">
-    <div class="marquee-track marquee-ltr">
-      <!-- first set -->
-      <span class="hashtag-pill pink">#ItsStatic</span>
-      <span class="hashtag-pill yellow">#StayEcstatic</span>
-      <span class="hashtag-pill blue">#SquadGoals</span>
-      <span class="hashtag-pill purple">#NightOwls</span>
-      <span class="hashtag-pill green">#FoodieVibes</span>
-      <span class="hashtag-pill pink">#CityExplorer</span>
-      <span class="hashtag-pill yellow">#WeekendVibes</span>
-      <span class="hashtag-pill blue">#SpontaneousAdventures</span>
-      <span class="hashtag-pill purple">#FitnessCrew</span>
-      <span class="hashtag-pill green">#HobbyHangout</span>
-      <span class="hashtag-pill pink">#MeetIRL</span>
-      <span class="hashtag-pill yellow">#DropAPin</span>
-      <!-- duplicate for seamless loop -->
-      <span class="hashtag-pill pink">#ItsStatic</span>
-      <span class="hashtag-pill yellow">#StayEcstatic</span>
-      <span class="hashtag-pill blue">#SquadGoals</span>
-      <span class="hashtag-pill purple">#NightOwls</span>
-      <span class="hashtag-pill green">#FoodieVibes</span>
-      <span class="hashtag-pill pink">#CityExplorer</span>
-      <span class="hashtag-pill yellow">#WeekendVibes</span>
-      <span class="hashtag-pill blue">#SpontaneousAdventures</span>
-      <span class="hashtag-pill purple">#FitnessCrew</span>
-      <span class="hashtag-pill green">#HobbyHangout</span>
-      <span class="hashtag-pill pink">#MeetIRL</span>
-      <span class="hashtag-pill yellow">#DropAPin</span>
-    </div>
-  </div>
-  <!-- Row 2 — right to left -->
-  <div class="marquee-wrap">
-    <div class="marquee-track marquee-rtl">
-      <span class="hashtag-pill blue">#IRLVibes</span>
-      <span class="hashtag-pill green">#NightlifeApp</span>
-      <span class="hashtag-pill pink">#GenZSocial</span>
-      <span class="hashtag-pill yellow">#BestNightEver</span>
-      <span class="hashtag-pill purple">#LocalEvents</span>
-      <span class="hashtag-pill blue">#FriendsWhoAdventure</span>
-      <span class="hashtag-pill green">#DiningSquad</span>
-      <span class="hashtag-pill pink">#RallyTheSquad</span>
-      <span class="hashtag-pill yellow">#BreakTheRoutine</span>
-      <span class="hashtag-pill purple">#SocialApp</span>
-      <span class="hashtag-pill blue">#GroupHangout</span>
-      <span class="hashtag-pill green">#CityNights</span>
-      <!-- duplicate -->
-      <span class="hashtag-pill blue">#IRLVibes</span>
-      <span class="hashtag-pill green">#NightlifeApp</span>
-      <span class="hashtag-pill pink">#GenZSocial</span>
-      <span class="hashtag-pill yellow">#BestNightEver</span>
-      <span class="hashtag-pill purple">#LocalEvents</span>
-      <span class="hashtag-pill blue">#FriendsWhoAdventure</span>
-      <span class="hashtag-pill green">#DiningSquad</span>
-      <span class="hashtag-pill pink">#RallyTheSquad</span>
-      <span class="hashtag-pill yellow">#BreakTheRoutine</span>
-      <span class="hashtag-pill purple">#SocialApp</span>
-      <span class="hashtag-pill blue">#GroupHangout</span>
-      <span class="hashtag-pill green">#CityNights</span>
-    </div>
-  </div>
+<!-- Unpacking Section -->
+<section class="py-stack-lg px-margin-mobile md:px-margin-desktop bg-white border-b-8 border-on-surface relative overflow-hidden">
+<div class="max-w-7xl mx-auto relative z-10">
+<div class="flex flex-col lg:flex-row gap-16">
+<div class="lg:w-1/3">
+<h2 class="font-display-lg text-7xl md:text-8xl text-on-surface leading-[0.8] tracking-tighter sticky top-32 uppercase">
+                    UNPACKING<br/><span class="bg-primary-container px-4 text-white inline-block mt-4 sticker-border sticker-shadow transform -rotate-2">THE<br/>STATIC</span>
+</h2>
+</div>
+<div class="lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-8">
+<div class="bg-white sticker-border sticker-shadow p-8 flex flex-col gap-6 floating-sticker transform rotate-1">
+<span class="material-symbols-outlined text-6xl text-primary">location_away</span>
+<h3 class="font-display-lg text-4xl uppercase">01. DROP PINS</h3>
+<p class="font-body-lg text-xl">Anonymized signaling. Mark the spot, trigger the rally. Your location is a statement, not a data point.</p>
+</div>
+<div class="bg-on-surface text-white sticker-border sticker-shadow p-8 flex flex-col gap-6 floating-sticker transform -rotate-1">
+<span class="material-symbols-outlined text-6xl text-secondary-container">vocal_soft</span>
+<h3 class="font-display-lg text-4xl text-secondary-container uppercase">02. SIGNAL NOISE</h3>
+<p class="font-body-lg text-xl opacity-90">Encrypted broadcast. Send the frequency to those who speak the language. The squad hears you.</p>
+</div>
+<div class="pop-gradient-3 sticker-border sticker-shadow p-8 flex flex-col gap-6 floating-sticker transform -rotate-2">
+<span class="material-symbols-outlined text-6xl text-on-tertiary-container">diversity_3</span>
+<h3 class="font-display-lg text-4xl uppercase">03. MASS MOBILIZE</h3>
+<p class="font-body-lg text-xl">Real-world convergence. From digital ping to physical impact. Meet the collective in the flesh.</p>
+</div>
+<div class="pop-gradient-2 sticker-border sticker-shadow p-8 flex flex-col gap-6 floating-sticker transform rotate-2">
+<span class="material-symbols-outlined text-6xl text-primary">shield_person</span>
+<h3 class="font-display-lg text-4xl text-primary uppercase">04. SECURE THE VIBE</h3>
+<p class="font-body-lg text-xl">Curation without exclusion. Community-policed spaces. Stay safe, stay loud, stay ecstatic.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
-
-<!-- ══════════ HOW IT WORKS ══════════ -->
-<section class="py-stack-lg px-margin-mobile md:px-margin-desktop bg-surface-container-low border-b-4 border-on-surface">
-  <div class="max-w-7xl mx-auto">
-    <div class="text-center mb-stack-lg">
-      <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg inline-block bg-inverse-primary px-4 py-2 sticker-border sticker-shadow transform -rotate-1">
-        How It Works
-      </h2>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-      <div class="bg-surface rounded-2xl p-stack-md sticker-border sticker-shadow flex flex-col items-center text-center transform hover:-translate-y-2 transition-transform duration-300">
-        <div class="w-20 h-20 bg-primary-container rounded-full sticker-border flex items-center justify-center mb-stack-sm shadow-[4px_4px_0px_0px_#1b1b1e]">
-          <span class="material-symbols-outlined text-4xl text-on-primary-container">location_on</span>
-        </div>
-        <h3 class="font-headline-md text-headline-md mb-2">1. Drop a Pin</h3>
-        <p class="font-body-md text-body-md text-on-surface-variant">Find the perfect spot and mark your territory on the map.</p>
-        <div class="mt-3 flex flex-wrap justify-center gap-1">
-          <span class="hashtag-pill blue">#DropAPin</span>
-          <span class="hashtag-pill pink">#FindYourSpot</span>
-        </div>
-      </div>
-      <div class="bg-surface rounded-2xl p-stack-md sticker-border sticker-shadow flex flex-col items-center text-center transform hover:-translate-y-2 transition-transform duration-300 delay-100">
-        <div class="w-20 h-20 bg-secondary-container rounded-full sticker-border flex items-center justify-center mb-stack-sm shadow-[4px_4px_0px_0px_#1b1b1e]">
-          <span class="material-symbols-outlined text-4xl text-on-secondary-container">campaign</span>
-        </div>
-        <h3 class="font-headline-md text-headline-md mb-2">2. Broadcast</h3>
-        <p class="font-body-md text-body-md text-on-surface-variant">Send out the signal to your crew or make it a public party.</p>
-        <div class="mt-3 flex flex-wrap justify-center gap-1">
-          <span class="hashtag-pill yellow">#RallyTheSquad</span>
-          <span class="hashtag-pill green">#Broadcast</span>
-        </div>
-      </div>
-      <div class="bg-surface rounded-2xl p-stack-md sticker-border sticker-shadow flex flex-col items-center text-center transform hover:-translate-y-2 transition-transform duration-300 delay-200">
-        <div class="w-20 h-20 bg-tertiary-container rounded-full sticker-border flex items-center justify-center mb-stack-sm shadow-[4px_4px_0px_0px_#1b1b1e]">
-          <span class="material-symbols-outlined text-4xl text-on-tertiary-container">groups</span>
-        </div>
-        <h3 class="font-headline-md text-headline-md mb-2">3. Meet the Squad</h3>
-        <p class="font-body-md text-body-md text-on-surface-variant">Gather up, get loud, and make memories IRL.</p>
-        <div class="mt-3 flex flex-wrap justify-center gap-1">
-          <span class="hashtag-pill purple">#SquadGoals</span>
-          <span class="hashtag-pill pink">#MakeMemories</span>
-        </div>
-      </div>
-    </div>
-  </div>
+<!-- Squad Protocols (Bento Grid) -->
+<section class="py-stack-lg px-margin-mobile md:px-margin-desktop">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row items-end justify-between mb-16 gap-4">
+<h2 class="font-display-lg text-6xl md:text-7xl bg-tertiary-fixed px-8 py-4 sticker-border sticker-shadow transform rotate-1 uppercase tracking-tighter">
+                SQUAD PROTOCOLS
+            </h2>
+<div class="font-display-lg text-xl uppercase tracking-widest text-primary">
+                / URBAN SECTOR ACTION /
+            </div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="lg:col-span-2 pop-gradient-1 rounded-[40px] p-8 sticker-border sticker-shadow relative overflow-hidden group cursor-pointer border-8 border-on-surface h-[400px] flex flex-col justify-between">
+<div class="relative z-10">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-7xl text-on-surface mb-6">nightlife</span>
+<img alt="mascot" class="w-24 h-24 transform -rotate-12" src="https://lh3.googleusercontent.com/aida/ADBb0ui0V5hyJ4LKbmlRdKH5X_RqRCugYELRGY8eBAIvuLu429nejk93_NBDXzDMwuB4XxOHV1hzHSp1x7Clz2vyVMABBenUmmIqLUaWrA9LHnyNUQ63k7yK6QlRq3FJZAQCU3Y36nTxrE4zVrl17cdBxjPRG2FgkAS8qI4wRtBiiMrfY90CPMTsmHPulP-vqdhGURM8ugNzC8V2yQ1k1PZ2dUcwY0TMFWfWtHKo_Liz1v_-nbSMrXRbRHwyJnM"/>
+</div>
+<h3 class="font-display-lg text-5xl uppercase leading-none">NOCTURNAL<br/>SURVIVAL</h3>
+</div>
+<div class="relative z-10">
+<button class="tactile-button bg-white text-on-surface font-display-lg text-2xl py-4 px-8 rounded-2xl uppercase">INITIALIZE</button>
+</div>
+<div class="absolute bottom-4 right-8 font-display-lg text-9xl opacity-10 pointer-events-none uppercase">DARK</div>
+</div>
+<div class="pop-gradient-3 rounded-[40px] p-8 sticker-border sticker-shadow relative overflow-hidden group cursor-pointer flex flex-col justify-between border-8 border-on-surface h-[400px]">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-7xl text-on-surface mb-6">terminal</span>
+<h3 class="font-display-lg text-4xl uppercase leading-tight">INTELLECTUAL<br/>INSURGENCY</h3>
+</div>
+<div class="bg-white px-4 py-2 font-display-lg text-lg sticker-border rounded-xl transform -rotate-3 text-center uppercase">
+                    GEEK OUT
+                </div>
+</div>
+<div class="pop-gradient-2 rounded-[40px] p-8 sticker-border sticker-shadow relative overflow-hidden group cursor-pointer flex flex-col justify-between border-8 border-on-surface h-[400px]">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-7xl text-on-surface mb-6">sprint</span>
+<h3 class="font-display-lg text-4xl uppercase leading-tight">KINETIC<br/>RESISTANCE</h3>
+</div>
+<div class="bg-white px-4 py-2 font-display-lg text-lg sticker-border rounded-xl transform rotate-3 text-center uppercase">
+                    SWEAT IT
+                </div>
+</div>
+<div class="lg:col-span-4 bg-on-surface rounded-[40px] p-10 sticker-border sticker-shadow relative overflow-hidden group cursor-pointer flex flex-col md:flex-row items-center justify-between border-8 border-on-surface gap-8">
+<div class="relative z-10 text-secondary-container">
+<h3 class="font-display-lg text-6xl mb-4 uppercase tracking-tighter">FUEL THE MOVEMENT</h3>
+<p class="font-display-lg text-2xl italic text-white/80 max-w-2xl">DINING IS A POLITICAL ACT. BREAK BREAD, BREAK CYCLES. FIND THE GRUB.</p>
+</div>
+<div class="flex relative z-10 gap-8">
+<div class="w-32 h-32 bg-primary-container rounded-[30px] sticker-border flex items-center justify-center transform rotate-12 sticker-shadow">
+<span class="material-symbols-outlined text-7xl text-white">restaurant</span>
+</div>
+<div class="w-32 h-32 bg-tertiary-fixed rounded-[30px] sticker-border flex items-center justify-center transform -rotate-6 sticker-shadow">
+<img alt="pop mascot small" class="w-20 h-20" src="https://lh3.googleusercontent.com/aida/ADBb0ui0V5hyJ4LKbmlRdKH5X_RqRCugYELRGY8eBAIvuLu429nejk93_NBDXzDMwuB4XxOHV1hzHSp1x7Clz2vyVMABBenUmmIqLUaWrA9LHnyNUQ63k7yK6QlRq3FJZAQCU3Y36nTxrE4zVrl17cdBxjPRG2FgkAS8qI4wRtBiiMrfY90CPMTsmHPulP-vqdhGURM8ugNzC8V2yQ1k1PZ2dUcwY0TMFWfWtHKo_Liz1v_-nbSMrXRbRHwyJnM"/>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-
-<!-- ══════════ OPERATIONAL SECTORS ══════════ -->
-<section class="py-stack-lg px-margin-mobile md:px-margin-desktop bg-background">
-  <div class="max-w-7xl mx-auto">
-    <div class="text-center mb-stack-lg">
-      <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg inline-block bg-secondary-fixed px-4 py-2 sticker-border sticker-shadow transform rotate-1">
-        Operational Sectors
-      </h2>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter auto-rows-[250px]">
-
-      <!-- Nightlife -->
-      <div class="lg:col-span-2 bg-[#8a2be2] rounded-3xl p-stack-md sticker-border sticker-shadow relative overflow-hidden group cursor-pointer">
-        <div class="relative z-10 text-on-primary">
-          <span class="material-symbols-outlined text-5xl mb-4">nightlife</span>
-          <h3 class="font-headline-lg text-headline-lg">Nightlife</h3>
-          <p class="font-body-md text-body-md mt-2 opacity-90">Own the night.</p>
-          <div class="flex flex-wrap gap-1 mt-3">
-            <span class="hashtag-pill purple">#NightOwls</span>
-            <span class="hashtag-pill pink">#NightlifeApp</span>
-            <span class="hashtag-pill yellow">#CityNights</span>
-          </div>
-        </div>
-        <div class="absolute -bottom-10 -right-10 w-48 h-48 bg-black/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500"></div>
-        <img class="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-overlay group-hover:opacity-50 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5SiAF-1-Y_617ajeWTWObheZuM6HZdowlzm81WurbjLcMASre-BHedEPQuD9u0LCScwBhT8cKOVqKDqhZxoQHbdYcRWX7FY8Lc2Sc9mQF6YxFwFzUPeuZpZ2gW-RnQNOJey6EEJxuBis2hsYYDqJmOMgrgEXQltOEw-k2DBqiHRFmHX9KcF_8Z37qPb-OAkUP-f5HNS3_YzQi09cZsoBUAWbWMT1RW89bmvz0NGFHI2e66Y68GC7RDI9akbGpe9zbSl-r4D22qjE" alt="Vibrant nightclub scene cartoon illustration"/>
-      </div>
-
-      <!-- Hobbies -->
-      <div class="bg-tertiary-fixed rounded-3xl p-stack-md sticker-border sticker-shadow relative overflow-hidden group cursor-pointer flex flex-col justify-between">
-        <div class="relative z-10 text-on-tertiary-fixed">
-          <span class="material-symbols-outlined text-5xl mb-4">palette</span>
-          <h3 class="font-headline-md text-headline-md">Hobbies</h3>
-        </div>
-        <div class="flex flex-col gap-2 mt-auto">
-          <div class="flex flex-wrap gap-1">
-            <span class="hashtag-pill blue">#HobbyHangout</span>
-            <span class="hashtag-pill green">#GeekOut</span>
-          </div>
-          <span class="inline-block bg-white px-3 py-1 font-label-sm sticker-border rounded-full transform -rotate-3">Geek Out</span>
-        </div>
-      </div>
-
-      <!-- Fitness -->
-      <div class="bg-secondary-container rounded-3xl p-stack-md sticker-border sticker-shadow relative overflow-hidden group cursor-pointer flex flex-col justify-between">
-        <div class="relative z-10 text-on-secondary-container">
-          <span class="material-symbols-outlined text-5xl mb-4">fitness_center</span>
-          <h3 class="font-headline-md text-headline-md">Fitness</h3>
-        </div>
-        <div class="flex flex-col gap-2 mt-auto items-end">
-          <div class="flex flex-wrap gap-1 justify-end">
-            <span class="hashtag-pill pink">#FitnessCrew</span>
-            <span class="hashtag-pill yellow">#SweatSesh</span>
-          </div>
-          <span class="inline-block bg-white px-3 py-1 font-label-sm sticker-border rounded-full transform rotate-3">Sweat Sesh</span>
-        </div>
-      </div>
-
-      <!-- Dining -->
-      <div class="lg:col-span-4 bg-primary-container rounded-3xl p-stack-md sticker-border sticker-shadow relative overflow-hidden group cursor-pointer flex items-center justify-between">
-        <div class="relative z-10 text-on-primary-container max-w-md">
-          <h3 class="font-headline-lg text-headline-lg mb-2">Dining</h3>
-          <p class="font-body-lg text-body-lg">Find the best grub spots and gather the foodies.</p>
-          <div class="flex flex-wrap gap-1 mt-3">
-            <span class="hashtag-pill pink">#FoodieVibes</span>
-            <span class="hashtag-pill yellow">#DiningSquad</span>
-            <span class="hashtag-pill blue">#EatWithFriends</span>
-            <span class="hashtag-pill green">#FoodTour</span>
-          </div>
-        </div>
-        <div class="hidden md:flex relative z-10 space-x-4">
-          <div class="w-24 h-24 bg-white rounded-full sticker-border flex items-center justify-center transform rotate-6 shadow-[4px_4px_0px_0px_#1b1b1e]">
-            <span class="material-symbols-outlined text-5xl text-primary">local_pizza</span>
-          </div>
-          <div class="w-24 h-24 bg-white rounded-full sticker-border flex items-center justify-center transform -rotate-12 shadow-[4px_4px_0px_0px_#1b1b1e] -mt-8">
-            <span class="material-symbols-outlined text-5xl text-tertiary">ramen_dining</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ SEO KEYWORD CLOUD (visually styled, screen-readable) ══════════ -->
-<section class="py-stack-lg px-margin-mobile md:px-margin-desktop bg-surface-container-low border-t-4 border-on-surface">
-  <div class="max-w-7xl mx-auto">
-    <div class="text-center mb-stack-md">
-      <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg inline-block bg-tertiary-fixed px-4 py-2 sticker-border sticker-shadow transform -rotate-1">
-        Trending on IT'S STATIC
-      </h2>
-    </div>
-    <div class="flex flex-wrap justify-center gap-3" aria-label="Trending keywords and hashtags">
-      <span class="hashtag-pill pink" style="font-size:17px">#ItsStatic</span>
-      <span class="hashtag-pill yellow" style="font-size:15px">#StayEcstatic</span>
-      <span class="hashtag-pill blue" style="font-size:13px">#MeetIRL</span>
-      <span class="hashtag-pill purple" style="font-size:17px">#SquadGoals</span>
-      <span class="hashtag-pill green" style="font-size:13px">#CityExplorer</span>
-      <span class="hashtag-pill pink" style="font-size:15px">#WeekendVibes</span>
-      <span class="hashtag-pill yellow" style="font-size:13px">#NightlifeApp</span>
-      <span class="hashtag-pill blue" style="font-size:17px">#IRLVibes</span>
-      <span class="hashtag-pill purple" style="font-size:13px">#FoodieVibes</span>
-      <span class="hashtag-pill green" style="font-size:15px">#FitnessCrew</span>
-      <span class="hashtag-pill pink" style="font-size:13px">#HobbyHangout</span>
-      <span class="hashtag-pill yellow" style="font-size:17px">#DropAPin</span>
-      <span class="hashtag-pill blue" style="font-size:13px">#GroupHangout</span>
-      <span class="hashtag-pill purple" style="font-size:15px">#GenZSocial</span>
-      <span class="hashtag-pill green" style="font-size:13px">#SpontaneousAdventures</span>
-      <span class="hashtag-pill pink" style="font-size:15px">#RallyTheSquad</span>
-      <span class="hashtag-pill yellow" style="font-size:13px">#BestNightEver</span>
-      <span class="hashtag-pill blue" style="font-size:17px">#LocalEvents</span>
-      <span class="hashtag-pill purple" style="font-size:13px">#DiningSquad</span>
-      <span class="hashtag-pill green" style="font-size:15px">#BreakTheRoutine</span>
-      <span class="hashtag-pill pink" style="font-size:13px">#CityNights</span>
-      <span class="hashtag-pill yellow" style="font-size:15px">#MakeMemories</span>
-      <span class="hashtag-pill blue" style="font-size:13px">#NightOwls</span>
-      <span class="hashtag-pill purple" style="font-size:17px">#FriendsWhoAdventure</span>
-    </div>
-  </div>
+<!-- Call to Action / Bottom Manifesto -->
+<section class="bg-primary-container text-on-primary-container py-stack-lg px-margin-mobile md:px-margin-desktop border-y-8 border-on-surface">
+<div class="max-w-5xl mx-auto text-center flex flex-col gap-12">
+<h2 class="font-display-lg text-7xl md:text-9xl leading-[0.85] tracking-tighter uppercase">
+            THE STATIC IS<br/><span class="bg-on-surface text-secondary-container px-6 transform -rotate-1 inline-block mt-4 sticker-border sticker-shadow">OPTIONAL.</span>
+</h2>
+<p class="font-display-lg text-3xl text-on-surface">JOIN THE ECSTATIC EDITION WAITING LIST.</p>
+<div class="flex flex-col md:flex-row justify-center gap-6 items-stretch">
+<input class="bg-white border-4 border-on-surface p-6 font-display-lg text-2xl text-on-surface placeholder:text-on-surface/30 focus:ring-8 focus:ring-secondary-container sticker-shadow rounded-2xl md:w-2/3" placeholder="YOUR_FREQUENCY@EMAIL.COM" type="email"/>
+<button class="tactile-button bg-tertiary-fixed text-on-tertiary-fixed px-12 py-6 font-display-lg text-3xl rounded-2xl uppercase">
+                ENLIST
+            </button>
+</div>
+</div>
 </section>
 </main>
-
-<!-- ══════════ FOOTER ══════════ -->
-<footer class="bg-surface-container-highest w-full border-t-4 border-on-surface">
-  <div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-stack-md gap-stack-sm w-full max-w-7xl mx-auto">
-    <div class="font-headline-lg text-headline-lg text-on-surface uppercase">IT'S STATIC</div>
-    <nav class="flex flex-wrap justify-center gap-4 md:gap-6" aria-label="Footer navigation">
-      <a class="text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors cursor-pointer sticker-border bg-surface px-3 py-1 rounded-full hover:-translate-y-1 inline-block" href="#">Nightlife</a>
-      <a class="text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors cursor-pointer sticker-border bg-surface px-3 py-1 rounded-full hover:-translate-y-1 inline-block" href="#">Hobbies</a>
-      <a class="text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors cursor-pointer sticker-border bg-surface px-3 py-1 rounded-full hover:-translate-y-1 inline-block" href="#">Fitness</a>
-      <a class="text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors cursor-pointer sticker-border bg-surface px-3 py-1 rounded-full hover:-translate-y-1 inline-block" href="#">Dining</a>
-      <a class="text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors cursor-pointer sticker-border bg-surface px-3 py-1 rounded-full hover:-translate-y-1 inline-block" href="#">Privacy</a>
-      <a class="text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors cursor-pointer sticker-border bg-surface px-3 py-1 rounded-full hover:-translate-y-1 inline-block" href="#">Terms</a>
-    </nav>
-    <div class="font-body-md text-body-md text-primary mt-4 md:mt-0 font-bold bg-primary-fixed-dim px-4 py-2 sticker-border transform rotate-1 inline-block">
-      © 2026 IT'S STATIC. STAY ECSTATIC.
+<!-- Footer -->
+<footer class="bg-surface-container-highest dark:bg-inverse-surface w-full border-t-4 border-on-surface dark:border-on-primary-fixed">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-stack-md gap-stack-sm w-full max-w-7xl mx-auto">
+<div class="flex flex-col items-start gap-2">
+<div class="font-display-lg text-headline-lg text-on-surface dark:text-inverse-on-surface uppercase">
+            IT'S STATIC
+        </div>
+<div class="font-label-sm text-primary uppercase">Established to Disrupt.</div>
+</div>
+<nav class="flex flex-wrap justify-center gap-4 md:gap-6">
+<a class="font-label-lg hover:text-primary transition-colors underline decoration-4 underline-offset-4" href="#">PROTOCOLS</a>
+<a class="font-label-lg hover:text-primary transition-colors underline decoration-4 underline-offset-4" href="#">MANIFESTO</a>
+<a class="font-label-lg hover:text-primary transition-colors underline decoration-4 underline-offset-4" href="#">PRIVACY</a>
+<a class="font-label-lg hover:text-primary transition-colors underline decoration-4 underline-offset-4" href="#">TERMS</a>
+</nav>
+<div class="font-body-md text-body-md text-primary dark:text-primary-fixed mt-4 md:mt-0 font-bold bg-primary-fixed-dim px-4 py-2 sticker-border transform rotate-1 inline-block">
+        © 2024 IT'S STATIC. STAY ECSTATIC.
     </div>
-  </div>
+</div>
 </footer>
-
-</body>
-</html>
+</body></html>
