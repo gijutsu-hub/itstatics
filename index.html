@@ -1,337 +1,774 @@
 <!DOCTYPE html>
-
-<html lang="en"><head>
+<html lang="en">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>IT'S STATIC - THE URBAN RESISTANCE</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&amp;family=Quicksand:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet"/>
 <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        /* Pop-Resistance Brutalist Styles */
-        .sticker-border {
-            border: 4px solid #1b1b1e;
-        }
-        .sticker-shadow {
-            box-shadow: 8px 8px 0px 0px #1b1b1e;
-        }
-        .pop-gradient-1 {
-            background: linear-gradient(135deg, #ff85c1 0%, #ffd8e7 100%);
-        }
-        .pop-gradient-2 {
-            background: linear-gradient(135deg, #7ed4fd 0%, #c0e8ff 100%);
-        }
-        .pop-gradient-3 {
-            background: linear-gradient(135deg, #c7ad07 0%, #ffe24c 100%);
-        }
-        /* 3D Tactile Button */
-        .tactile-button {
-            background: #ff85c1;
-            border: 4px solid #1b1b1e;
-            box-shadow: 0px 8px 0px 0px #1b1b1e;
-            transition: all 0.1s ease;
-            transform: translateY(-4px);
-        }
-        .tactile-button:active {
-            transform: translateY(0px);
-            box-shadow: 0px 0px 0px 0px #1b1b1e;
-        }
-        .bg-pop-dots {
-            background-color: #fbf8fc;
-            background-image: radial-gradient(#9f376f 1px, transparent 0);
-            background-size: 24px 24px;
-        }
-        .floating-sticker {
-            transition: transform 0.3s ease-out;
-        }
-        .floating-sticker:hover {
-            transform: scale(1.02) rotate(-1deg);
-        }
-    </style>
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    /* ── Brutalist core ── */
+    .sticker-border  { border: 4px solid #1b1b1e; }
+    .sticker-shadow  { box-shadow: 8px 8px 0px 0px #1b1b1e; }
+
+    .pop-gradient-1  { background: linear-gradient(135deg, #ff85c1 0%, #ffd8e7 100%); }
+    .pop-gradient-2  { background: linear-gradient(135deg, #7ed4fd 0%, #c0e8ff 100%); }
+    .pop-gradient-3  { background: linear-gradient(135deg, #c7ad07 0%, #ffe24c 100%); }
+    .pop-gradient-4  { background: linear-gradient(135deg, #a8ff78 0%, #78ffd6 100%); }
+
+    /* 3-D button */
+    .tactile-button {
+        background: #ff85c1;
+        border: 4px solid #1b1b1e;
+        box-shadow: 0px 8px 0px 0px #1b1b1e;
+        transition: all 0.1s ease;
+        transform: translateY(-4px);
+        cursor: pointer;
+    }
+    .tactile-button:active {
+        transform: translateY(0px);
+        box-shadow: 0px 0px 0px 0px #1b1b1e;
+    }
+
+    /* Dot background */
+    .bg-pop-dots {
+        background-color: #fbf8fc;
+        background-image: radial-gradient(#9f376f 1px, transparent 0);
+        background-size: 24px 24px;
+    }
+
+    /* Hover wobble */
+    .floating-sticker { transition: transform 0.3s ease-out; }
+    .floating-sticker:hover { transform: scale(1.02) rotate(-1deg); }
+
+    /* ── RESPONSIVE: prevent horizontal bleed from rotated stickers ── */
+    section, header, footer { overflow-x: hidden; }
+
+    /* ── GUESS section ── */
+    .guess-tape {
+        background: #ffe24c;
+        border: 4px solid #1b1b1e;
+        box-shadow: 6px 6px 0 #1b1b1e;
+        display: inline-block;
+        padding: 4px 20px;
+        transform: rotate(-1.5deg);
+        font-family: 'Bricolage Grotesque', sans-serif;
+        font-weight: 800;
+        font-size: 1.1rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    /* ── Google Form iframe wrapper ── */
+    .form-shell {
+        background: #ffffff;
+        border: 4px solid #1b1b1e;
+        box-shadow: 10px 10px 0px 0px #1b1b1e;
+        border-radius: 24px;
+        overflow: hidden;
+        transform: rotate(0.5deg);
+        position: relative;
+    }
+    .form-shell iframe {
+        width: 100%;
+        min-height: 680px;
+        border: none;
+        display: block;
+    }
+
+    /* Prize badge */
+    .prize-badge {
+        background: #ff85c1;
+        border: 4px solid #1b1b1e;
+        box-shadow: 6px 6px 0 #1b1b1e;
+        border-radius: 9999px;
+        padding: 8px 24px;
+        font-family: 'Bricolage Grotesque', sans-serif;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        display: inline-block;
+    }
+
+    /* Destination cards */
+    .dest-card {
+        border: 4px solid #1b1b1e;
+        box-shadow: 6px 6px 0 #1b1b1e;
+        border-radius: 20px;
+        overflow: hidden;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        cursor: pointer;
+    }
+    .dest-card:hover {
+        transform: translateY(-6px) rotate(-1deg);
+        box-shadow: 12px 12px 0 #1b1b1e;
+    }
+
+    /* ── ENLIST POPUP ── */
+    #enlist-popup {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+    }
+    #enlist-popup.open { display: flex; }
+
+    .popup-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(27,27,30,0.85);
+        backdrop-filter: blur(4px);
+        cursor: pointer;
+    }
+
+    .popup-card {
+        position: relative;
+        z-index: 10;
+        background: #fbf8fc;
+        border: 6px solid #1b1b1e;
+        box-shadow: 16px 16px 0px 0px #1b1b1e;
+        border-radius: 32px;
+        max-width: 540px;
+        width: 100%;
+        padding: 48px 40px 40px;
+        text-align: center;
+        animation: popup-drop 0.25s cubic-bezier(0.34,1.56,0.64,1) forwards;
+    }
+
+    @keyframes popup-drop {
+        from { transform: scale(0.7) rotate(-4deg); opacity: 0; }
+        to   { transform: scale(1) rotate(-1deg);  opacity: 1; }
+    }
+
+    .popup-close {
+        position: absolute;
+        top: 16px; right: 16px;
+        background: #1b1b1e;
+        color: #ffe24c;
+        border: none;
+        border-radius: 50%;
+        width: 40px; height: 40px;
+        font-size: 20px;
+        cursor: pointer;
+        font-family: 'Bricolage Grotesque', sans-serif;
+        font-weight: 800;
+        display: flex; align-items: center; justify-content: center;
+        transition: transform 0.15s ease;
+    }
+    .popup-close:hover { transform: scale(1.15) rotate(15deg); }
+
+    .popup-blink {
+        display: inline-block;
+        background: #ff85c1;
+        border: 4px solid #1b1b1e;
+        box-shadow: 6px 6px 0 #1b1b1e;
+        padding: 4px 18px;
+        font-family: 'Bricolage Grotesque', sans-serif;
+        font-weight: 800;
+        font-size: 0.85rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        animation: blink-badge 1.4s step-start infinite;
+        margin-bottom: 24px;
+    }
+    @keyframes blink-badge {
+        0%, 100% { opacity: 1; }
+        50%       { opacity: 0.3; }
+    }
+
+    /* ── Responsive type scale ── */
+    @media (max-width: 767px) {
+        .hero-h1      { font-size: 3.2rem !important; line-height: 0.92 !important; }
+        .hero-sub     { font-size: 1.35rem !important; }
+        .section-h2   { font-size: 3rem !important; line-height: 0.9 !important; }
+        .bento-h2     { font-size: 2.5rem !important; }
+        .cta-h2       { font-size: 3.2rem !important; line-height: 0.9 !important; }
+        .guess-h2     { font-size: 3rem !important; line-height: 0.9 !important; }
+        .hero-manifesto { font-size: 1.2rem !important; }
+        .btn-join     { font-size: 1.1rem !important; padding: 1rem 2rem !important; }
+        .mobile-no-rotate { transform: none !important; }
+        .popup-card { padding: 36px 24px 28px; }
+    }
+
+    @media (max-width: 480px) {
+        .hero-h1  { font-size: 2.4rem !important; }
+        .section-h2 { font-size: 2.2rem !important; }
+        .cta-h2   { font-size: 2.4rem !important; }
+        .guess-h2 { font-size: 2.4rem !important; }
+        .sticker-shadow { box-shadow: 5px 5px 0px 0px #1b1b1e; }
+    }
+</style>
+
 <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "on-primary": "#ffffff",
-                        "secondary-container": "#7ed4fd",
-                        "on-primary-fixed-variant": "#811d57",
-                        "on-secondary-fixed-variant": "#004d66",
-                        "inverse-surface": "#303033",
-                        "tertiary-fixed-dim": "#e2c62d",
-                        "tertiary-fixed": "#ffe24c",
-                        "inverse-on-surface": "#f3f0f4",
-                        "on-secondary": "#ffffff",
-                        "on-surface-variant": "#544249",
-                        "tertiary": "#6d5e00",
-                        "error-container": "#ffdad6",
-                        "surface-container": "#f0edf1",
-                        "surface-tint": "#9f376f",
-                        "outline-variant": "#d9c0c9",
-                        "on-primary-fixed": "#3d0025",
-                        "surface-container-highest": "#e4e1e6",
-                        "primary": "#9f376f",
-                        "on-secondary-container": "#005b78",
-                        "on-surface": "#1b1b1e",
-                        "surface-container-high": "#eae7eb",
-                        "on-tertiary": "#ffffff",
-                        "on-tertiary-fixed-variant": "#524600",
-                        "secondary": "#006686",
-                        "inverse-primary": "#ffafd2",
-                        "error": "#ba1a1a",
-                        "primary-fixed": "#ffd8e7",
-                        "on-background": "#1b1b1e",
-                        "surface-variant": "#e4e1e6",
-                        "background": "#fbf8fc",
-                        "surface-dim": "#dcd9dd",
-                        "surface-container-low": "#f6f2f7",
-                        "secondary-fixed": "#c0e8ff",
-                        "surface": "#fbf8fc",
-                        "on-error": "#ffffff",
-                        "tertiary-container": "#c7ad07",
-                        "outline": "#877179",
-                        "primary-container": "#ff85c1",
-                        "on-primary-container": "#791651",
-                        "primary-fixed-dim": "#ffafd2",
-                        "on-secondary-fixed": "#001e2b",
-                        "surface-container-lowest": "#ffffff",
-                        "on-tertiary-fixed": "#211b00",
-                        "surface-bright": "#fbf8fc",
-                        "on-error-container": "#93000a",
-                        "secondary-fixed-dim": "#7bd1fa",
-                        "on-tertiary-container": "#4c4100"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "gutter": "24px",
-                        "stack-lg": "48px",
-                        "margin-mobile": "16px",
-                        "unit": "8px",
-                        "margin-desktop": "64px",
-                        "stack-md": "24px",
-                        "stack-sm": "12px"
-                    },
-                    "fontFamily": {
-                        "body-lg": ["Quicksand"],
-                        "display-lg": ["Bricolage Grotesque"],
-                        "headline-md": ["Bricolage Grotesque"],
-                        "headline-lg": ["Bricolage Grotesque"],
-                        "body-md": ["Quicksand"],
-                        "headline-lg-mobile": ["Bricolage Grotesque"],
-                        "label-lg": ["Quicksand"],
-                        "label-sm": ["Quicksand"]
-                    },
-                    "fontSize": {
-                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "600"}],
-                        "display-lg": ["56px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
-                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
-                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
-                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "500"}],
-                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
-                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "700"}],
-                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}]
-                    }
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#7ed4fd",
+                    "on-primary-fixed-variant": "#811d57",
+                    "on-secondary-fixed-variant": "#004d66",
+                    "inverse-surface": "#303033",
+                    "tertiary-fixed-dim": "#e2c62d",
+                    "tertiary-fixed": "#ffe24c",
+                    "inverse-on-surface": "#f3f0f4",
+                    "on-secondary": "#ffffff",
+                    "on-surface-variant": "#544249",
+                    "tertiary": "#6d5e00",
+                    "error-container": "#ffdad6",
+                    "surface-container": "#f0edf1",
+                    "surface-tint": "#9f376f",
+                    "outline-variant": "#d9c0c9",
+                    "on-primary-fixed": "#3d0025",
+                    "surface-container-highest": "#e4e1e6",
+                    "primary": "#9f376f",
+                    "on-secondary-container": "#005b78",
+                    "on-surface": "#1b1b1e",
+                    "surface-container-high": "#eae7eb",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#524600",
+                    "secondary": "#006686",
+                    "inverse-primary": "#ffafd2",
+                    "error": "#ba1a1a",
+                    "primary-fixed": "#ffd8e7",
+                    "on-background": "#1b1b1e",
+                    "surface-variant": "#e4e1e6",
+                    "background": "#fbf8fc",
+                    "surface-dim": "#dcd9dd",
+                    "surface-container-low": "#f6f2f7",
+                    "secondary-fixed": "#c0e8ff",
+                    "surface": "#fbf8fc",
+                    "on-error": "#ffffff",
+                    "tertiary-container": "#c7ad07",
+                    "outline": "#877179",
+                    "primary-container": "#ff85c1",
+                    "on-primary-container": "#791651",
+                    "primary-fixed-dim": "#ffafd2",
+                    "on-secondary-fixed": "#001e2b",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed": "#211b00",
+                    "surface-bright": "#fbf8fc",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#7bd1fa",
+                    "on-tertiary-container": "#4c4100"
+                },
+                borderRadius: {
+                    DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"
+                },
+                spacing: {
+                    gutter: "24px", "stack-lg": "48px",
+                    "margin-mobile": "16px", unit: "8px",
+                    "margin-desktop": "64px", "stack-md": "24px", "stack-sm": "12px"
+                },
+                fontFamily: {
+                    "body-lg": ["Quicksand"], "display-lg": ["Bricolage Grotesque"],
+                    "headline-md": ["Bricolage Grotesque"], "headline-lg": ["Bricolage Grotesque"],
+                    "body-md": ["Quicksand"], "headline-lg-mobile": ["Bricolage Grotesque"],
+                    "label-lg": ["Quicksand"], "label-sm": ["Quicksand"]
+                },
+                fontSize: {
+                    "body-lg": ["18px", { lineHeight: "28px", fontWeight: "600" }],
+                    "display-lg": ["56px", { lineHeight: "64px", letterSpacing: "-0.02em", fontWeight: "800" }],
+                    "headline-md": ["24px", { lineHeight: "32px", fontWeight: "700" }],
+                    "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "700" }],
+                    "body-md": ["16px", { lineHeight: "24px", fontWeight: "500" }],
+                    "headline-lg-mobile": ["28px", { lineHeight: "36px", fontWeight: "700" }],
+                    "label-lg": ["14px", { lineHeight: "20px", letterSpacing: "0.02em", fontWeight: "700" }],
+                    "label-sm": ["12px", { lineHeight: "16px", fontWeight: "700" }]
                 }
             }
         }
-    </script>
+    }
+</script>
 </head>
+
 <body class="bg-pop-dots text-on-background font-body-lg min-h-screen flex flex-col">
-<!-- TopAppBar -->
-<header class="bg-secondary-container w-full top-0 sticky z-50 border-b-8 border-on-surface shadow-[0px_8px_0px_0px_rgba(27,27,30,1)]">
-<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 w-full max-w-full mx-auto">
-<div class="flex items-center gap-4">
-<img alt="Mascot" class="w-14 h-14 rounded-full sticker-border hidden md:block bg-white" src="https://lh3.googleusercontent.com/aida/ADBb0ui0V5hyJ4LKbmlRdKH5X_RqRCugYELRGY8eBAIvuLu429nejk93_NBDXzDMwuB4XxOHV1hzHSp1x7Clz2vyVMABBenUmmIqLUaWrA9LHnyNUQ63k7yK6QlRq3FJZAQCU3Y36nTxrE4zVrl17cdBxjPRG2FgkAS8qI4wRtBiiMrfY90CPMTsmHPulP-vqdhGURM8ugNzC8V2yQ1k1PZ2dUcwY0TMFWfWtHKo_Liz1v_-nbSMrXRbRHwyJnM"/>
-<img alt="IT'S STATIC" class="h-12 md:h-16 filter drop-shadow-[2px_2px_0px_#000]" src="https://lh3.googleusercontent.com/aida/ADBb0uhqB2RSMzGaKnMznnykCI_3KjTl3OfTCYXSIgIhCtKhCVmo5FW8eLo22NLSIB_6alM_gJq2kkgsYuJROPspSSpgI1c2IOxpAeYOjO6SGJON2l3fCMeS_oARBEskmcp4pydRib_kXYoDbjUsxx0ZtfCB0qEDA5o1LTxCr6VlYmGaadxQV3XV-dw1a6S8kCjM89pWoG-CuqR1ZeSpTYpHwzdBVdpDIMmvUKbJwKPH2Vq_VrR6s5ShN7jU0Io"/>
-</div>
-<button class="tactile-button bg-primary-container text-on-primary-container px-8 py-3 font-display-lg text-xl rounded-xl uppercase">
-            ENLIST
-        </button>
-</div>
-</header>
-<!-- Main Content -->
-<main class="flex-grow">
-<!-- Hero / Manifesto Section -->
-<section class="py-stack-lg px-margin-mobile md:px-margin-desktop overflow-hidden border-b-8 border-on-surface relative">
-<div class="max-w-7xl mx-auto z-10 relative">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-<div class="lg:col-span-7 flex flex-col gap-stack-md">
-<div class="inline-block bg-tertiary-fixed text-on-tertiary-fixed px-6 py-2 sticker-border sticker-shadow transform -rotate-2 font-display-lg text-2xl uppercase tracking-tighter">
-                    MANIFESTO 001: THE URBAN RESISTANCE
-                </div>
-<h1 class="font-display-lg text-6xl md:text-8xl text-on-surface leading-[0.9] tracking-tighter uppercase">
-                    DON'T JUST <span class="text-primary">EXIST.</span><br/>
-<span class="bg-secondary-container px-4 sticker-border sticker-shadow inline-block transform rotate-1 mt-2">RESIST THE STATIC.</span>
-</h1>
-<div class="bg-white p-8 sticker-border sticker-shadow transform rotate-1 max-w-2xl relative">
-<div class="absolute -top-10 -right-10 w-24 h-24 hidden lg:block transform -rotate-12">
-<img alt="pop mascot" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0ui0V5hyJ4LKbmlRdKH5X_RqRCugYELRGY8eBAIvuLu429nejk93_NBDXzDMwuB4XxOHV1hzHSp1x7Clz2vyVMABBenUmmIqLUaWrA9LHnyNUQ63k7yK6QlRq3FJZAQCU3Y36nTxrE4zVrl17cdBxjPRG2FgkAS8qI4wRtBiiMrfY90CPMTsmHPulP-vqdhGURM8ugNzC8V2yQ1k1PZ2dUcwY0TMFWfWtHKo_Liz1v_-nbSMrXRbRHwyJnM"/>
-</div>
-<p class="font-display-lg text-2xl text-on-surface leading-tight mb-6">
-                        THE CITY IS SCREAMING. ALGORITHMS DICTATE YOUR MOVEMENT. WE ARE HERE FOR THE SURVIVAL OF THE SOCIALLY LITERATE.
-                    </p>
-<p class="font-body-md text-lg text-on-surface-variant italic font-bold uppercase tracking-wide">
-                        Unpacking the digital sludge. Reclaiming the asphalt. Dropping pins, breaking cycles.
-                    </p>
-</div>
-<div class="flex flex-wrap gap-6 mt-8">
-<button class="tactile-button bg-tertiary-fixed text-on-tertiary-fixed px-12 py-6 font-display-lg text-2xl rounded-2xl flex items-center gap-3">
-                        JOIN THE SQUAD
-                        <span class="material-symbols-outlined text-3xl">bolt</span>
-</button>
-</div>
-</div>
-<div class="lg:col-span-5 relative">
-<div class="aspect-square pop-gradient-2 rounded-[40px] sticker-border sticker-shadow relative overflow-hidden transform rotate-3 floating-sticker">
-<img alt="Character Group" class="w-full h-full object-cover mix-blend-multiply opacity-90" src="https://lh3.googleusercontent.com/aida/ADBb0uirIUHId2vWy_ZuDIKru2r4_Fu07vZ2L2jPDBlqnH4G6hYQ_MQ4Lgmktgtt8L7upxugiN4VEth6s4AE7ajqOlQSTxTOp5sB3GJ7m4N6NaieAgcYpMxtt1xeh2LfP_HZ3EgCK25JvKGUYdvRBJAkoBnnWozN_TDG0CU53N9uSCJ2b2OwvU_XU7Xhrsot_lUsHlETw_qZPoZI0S5MDQIYeKxKDc71BfzNxlu2DzsQR_EDgRGQUbCn4hYk08o"/>
-</div>
-<div class="absolute -top-12 -right-6 bg-primary-container p-4 sticker-border sticker-shadow transform -rotate-12 font-display-lg text-4xl text-on-primary-container z-20">
-                    ECSTATIC!
-                </div>
-<div class="absolute -bottom-10 -left-6 bg-on-surface text-secondary-container p-4 sticker-border sticker-shadow transform rotate-6 font-display-lg text-2xl z-20 uppercase">
-                    NO BOTS allowed.
-                </div>
-</div>
-</div>
-</div>
-</section>
-<!-- Unpacking Section -->
-<section class="py-stack-lg px-margin-mobile md:px-margin-desktop bg-white border-b-8 border-on-surface relative overflow-hidden">
-<div class="max-w-7xl mx-auto relative z-10">
-<div class="flex flex-col lg:flex-row gap-16">
-<div class="lg:w-1/3">
-<h2 class="font-display-lg text-7xl md:text-8xl text-on-surface leading-[0.8] tracking-tighter sticky top-32 uppercase">
-                    UNPACKING<br/><span class="bg-primary-container px-4 text-white inline-block mt-4 sticker-border sticker-shadow transform -rotate-2">THE<br/>STATIC</span>
-</h2>
-</div>
-<div class="lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-8">
-<div class="bg-white sticker-border sticker-shadow p-8 flex flex-col gap-6 floating-sticker transform rotate-1">
-<span class="material-symbols-outlined text-6xl text-primary">location_away</span>
-<h3 class="font-display-lg text-4xl uppercase">01. DROP PINS</h3>
-<p class="font-body-lg text-xl">Anonymized signaling. Mark the spot, trigger the rally. Your location is a statement, not a data point.</p>
-</div>
-<div class="bg-on-surface text-white sticker-border sticker-shadow p-8 flex flex-col gap-6 floating-sticker transform -rotate-1">
-<span class="material-symbols-outlined text-6xl text-secondary-container">vocal_soft</span>
-<h3 class="font-display-lg text-4xl text-secondary-container uppercase">02. SIGNAL NOISE</h3>
-<p class="font-body-lg text-xl opacity-90">Encrypted broadcast. Send the frequency to those who speak the language. The squad hears you.</p>
-</div>
-<div class="pop-gradient-3 sticker-border sticker-shadow p-8 flex flex-col gap-6 floating-sticker transform -rotate-2">
-<span class="material-symbols-outlined text-6xl text-on-tertiary-container">diversity_3</span>
-<h3 class="font-display-lg text-4xl uppercase">03. MASS MOBILIZE</h3>
-<p class="font-body-lg text-xl">Real-world convergence. From digital ping to physical impact. Meet the collective in the flesh.</p>
-</div>
-<div class="pop-gradient-2 sticker-border sticker-shadow p-8 flex flex-col gap-6 floating-sticker transform rotate-2">
-<span class="material-symbols-outlined text-6xl text-primary">shield_person</span>
-<h3 class="font-display-lg text-4xl text-primary uppercase">04. SECURE THE VIBE</h3>
-<p class="font-body-lg text-xl">Curation without exclusion. Community-policed spaces. Stay safe, stay loud, stay ecstatic.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Squad Protocols (Bento Grid) -->
-<section class="py-stack-lg px-margin-mobile md:px-margin-desktop">
-<div class="max-w-7xl mx-auto">
-<div class="flex flex-col md:flex-row items-end justify-between mb-16 gap-4">
-<h2 class="font-display-lg text-6xl md:text-7xl bg-tertiary-fixed px-8 py-4 sticker-border sticker-shadow transform rotate-1 uppercase tracking-tighter">
-                SQUAD PROTOCOLS
-            </h2>
-<div class="font-display-lg text-xl uppercase tracking-widest text-primary">
-                / URBAN SECTOR ACTION /
-            </div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-<div class="lg:col-span-2 pop-gradient-1 rounded-[40px] p-8 sticker-border sticker-shadow relative overflow-hidden group cursor-pointer border-8 border-on-surface h-[400px] flex flex-col justify-between">
-<div class="relative z-10">
-<div class="flex justify-between items-start">
-<span class="material-symbols-outlined text-7xl text-on-surface mb-6">nightlife</span>
-<img alt="mascot" class="w-24 h-24 transform -rotate-12" src="https://lh3.googleusercontent.com/aida/ADBb0ui0V5hyJ4LKbmlRdKH5X_RqRCugYELRGY8eBAIvuLu429nejk93_NBDXzDMwuB4XxOHV1hzHSp1x7Clz2vyVMABBenUmmIqLUaWrA9LHnyNUQ63k7yK6QlRq3FJZAQCU3Y36nTxrE4zVrl17cdBxjPRG2FgkAS8qI4wRtBiiMrfY90CPMTsmHPulP-vqdhGURM8ugNzC8V2yQ1k1PZ2dUcwY0TMFWfWtHKo_Liz1v_-nbSMrXRbRHwyJnM"/>
-</div>
-<h3 class="font-display-lg text-5xl uppercase leading-none">NOCTURNAL<br/>SURVIVAL</h3>
-</div>
-<div class="relative z-10">
-<button class="tactile-button bg-white text-on-surface font-display-lg text-2xl py-4 px-8 rounded-2xl uppercase">INITIALIZE</button>
-</div>
-<div class="absolute bottom-4 right-8 font-display-lg text-9xl opacity-10 pointer-events-none uppercase">DARK</div>
-</div>
-<div class="pop-gradient-3 rounded-[40px] p-8 sticker-border sticker-shadow relative overflow-hidden group cursor-pointer flex flex-col justify-between border-8 border-on-surface h-[400px]">
-<div class="relative z-10">
-<span class="material-symbols-outlined text-7xl text-on-surface mb-6">terminal</span>
-<h3 class="font-display-lg text-4xl uppercase leading-tight">INTELLECTUAL<br/>INSURGENCY</h3>
-</div>
-<div class="bg-white px-4 py-2 font-display-lg text-lg sticker-border rounded-xl transform -rotate-3 text-center uppercase">
-                    GEEK OUT
-                </div>
-</div>
-<div class="pop-gradient-2 rounded-[40px] p-8 sticker-border sticker-shadow relative overflow-hidden group cursor-pointer flex flex-col justify-between border-8 border-on-surface h-[400px]">
-<div class="relative z-10">
-<span class="material-symbols-outlined text-7xl text-on-surface mb-6">sprint</span>
-<h3 class="font-display-lg text-4xl uppercase leading-tight">KINETIC<br/>RESISTANCE</h3>
-</div>
-<div class="bg-white px-4 py-2 font-display-lg text-lg sticker-border rounded-xl transform rotate-3 text-center uppercase">
-                    SWEAT IT
-                </div>
-</div>
-<div class="lg:col-span-4 bg-on-surface rounded-[40px] p-10 sticker-border sticker-shadow relative overflow-hidden group cursor-pointer flex flex-col md:flex-row items-center justify-between border-8 border-on-surface gap-8">
-<div class="relative z-10 text-secondary-container">
-<h3 class="font-display-lg text-6xl mb-4 uppercase tracking-tighter">FUEL THE MOVEMENT</h3>
-<p class="font-display-lg text-2xl italic text-white/80 max-w-2xl">DINING IS A POLITICAL ACT. BREAK BREAD, BREAK CYCLES. FIND THE GRUB.</p>
-</div>
-<div class="flex relative z-10 gap-8">
-<div class="w-32 h-32 bg-primary-container rounded-[30px] sticker-border flex items-center justify-center transform rotate-12 sticker-shadow">
-<span class="material-symbols-outlined text-7xl text-white">restaurant</span>
-</div>
-<div class="w-32 h-32 bg-tertiary-fixed rounded-[30px] sticker-border flex items-center justify-center transform -rotate-6 sticker-shadow">
-<img alt="pop mascot small" class="w-20 h-20" src="https://lh3.googleusercontent.com/aida/ADBb0ui0V5hyJ4LKbmlRdKH5X_RqRCugYELRGY8eBAIvuLu429nejk93_NBDXzDMwuB4XxOHV1hzHSp1x7Clz2vyVMABBenUmmIqLUaWrA9LHnyNUQ63k7yK6QlRq3FJZAQCU3Y36nTxrE4zVrl17cdBxjPRG2FgkAS8qI4wRtBiiMrfY90CPMTsmHPulP-vqdhGURM8ugNzC8V2yQ1k1PZ2dUcwY0TMFWfWtHKo_Liz1v_-nbSMrXRbRHwyJnM"/>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Call to Action / Bottom Manifesto -->
-<section class="bg-primary-container text-on-primary-container py-stack-lg px-margin-mobile md:px-margin-desktop border-y-8 border-on-surface">
-<div class="max-w-5xl mx-auto text-center flex flex-col gap-12">
-<h2 class="font-display-lg text-7xl md:text-9xl leading-[0.85] tracking-tighter uppercase">
-            THE STATIC IS<br/><span class="bg-on-surface text-secondary-container px-6 transform -rotate-1 inline-block mt-4 sticker-border sticker-shadow">OPTIONAL.</span>
-</h2>
-<p class="font-display-lg text-3xl text-on-surface">JOIN THE ECSTATIC EDITION WAITING LIST.</p>
-<div class="flex flex-col md:flex-row justify-center gap-6 items-stretch">
-<input class="bg-white border-4 border-on-surface p-6 font-display-lg text-2xl text-on-surface placeholder:text-on-surface/30 focus:ring-8 focus:ring-secondary-container sticker-shadow rounded-2xl md:w-2/3" placeholder="YOUR_FREQUENCY@EMAIL.COM" type="email"/>
-<button class="tactile-button bg-tertiary-fixed text-on-tertiary-fixed px-12 py-6 font-display-lg text-3xl rounded-2xl uppercase">
-                ENLIST
-            </button>
-</div>
-</div>
-</section>
-</main>
-<!-- Footer -->
-<footer class="bg-surface-container-highest dark:bg-inverse-surface w-full border-t-4 border-on-surface dark:border-on-primary-fixed">
-<div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-stack-md gap-stack-sm w-full max-w-7xl mx-auto">
-<div class="flex flex-col items-start gap-2">
-<div class="font-display-lg text-headline-lg text-on-surface dark:text-inverse-on-surface uppercase">
-            IT'S STATIC
+
+<!-- ════════════════════════════════════════════════
+     ENLIST POPUP
+════════════════════════════════════════════════ -->
+<div id="enlist-popup" role="dialog" aria-modal="true" aria-label="Enlist popup">
+    <div class="popup-backdrop" onclick="closePopup()"></div>
+    <div class="popup-card">
+        <button class="popup-close" onclick="closePopup()" aria-label="Close">✕</button>
+
+        <div class="popup-blink">⚡ TRANSMISSION INCOMING ⚡</div>
+
+        <div class="mb-4 text-6xl">📡</div>
+
+        <h2 class="font-display-lg text-4xl md:text-5xl uppercase text-on-surface leading-tight mb-4 tracking-tighter">
+            ENLIST IS<br/>
+            <span class="bg-tertiary-fixed px-3 sticker-border sticker-shadow inline-block transform rotate-1">LOADING.</span>
+        </h2>
+
+        <p class="font-body-lg text-lg text-on-surface-variant uppercase tracking-wide mb-6">
+            The frequency isn't calibrated yet.<br/>
+            The static is still becoming.<br/>
+            <strong class="text-primary">YOU'LL KNOW WHEN YOU KNOW.</strong>
+        </p>
+
+        <div class="bg-on-surface text-secondary-container p-4 sticker-border sticker-shadow rounded-2xl mb-6 font-display-lg text-lg uppercase">
+            "THE PORTAL OPENS WHEN THE VIBE PERMITS."<br/>
+            <span class="text-white/50 text-sm normal-case font-body-md">— iStatic Council, probably</span>
         </div>
-<div class="font-label-sm text-primary uppercase">Established to Disrupt.</div>
-</div>
-<nav class="flex flex-wrap justify-center gap-4 md:gap-6">
-<a class="font-label-lg hover:text-primary transition-colors underline decoration-4 underline-offset-4" href="#">PROTOCOLS</a>
-<a class="font-label-lg hover:text-primary transition-colors underline decoration-4 underline-offset-4" href="#">MANIFESTO</a>
-<a class="font-label-lg hover:text-primary transition-colors underline decoration-4 underline-offset-4" href="#">PRIVACY</a>
-<a class="font-label-lg hover:text-primary transition-colors underline decoration-4 underline-offset-4" href="#">TERMS</a>
-</nav>
-<div class="font-body-md text-body-md text-primary dark:text-primary-fixed mt-4 md:mt-0 font-bold bg-primary-fixed-dim px-4 py-2 sticker-border transform rotate-1 inline-block">
-        © 2024 IT'S STATIC. STAY ECSTATIC.
+
+        <p class="font-body-md text-sm text-on-surface-variant uppercase tracking-widest">
+            No ETA. No waitlist. Just static.
+        </p>
     </div>
 </div>
+
+<!-- ════════════════════════════════════════════════
+     TOP APP BAR
+════════════════════════════════════════════════ -->
+<header class="bg-secondary-container w-full top-0 sticky z-50 border-b-8 border-on-surface shadow-[0px_8px_0px_0px_rgba(27,27,30,1)]">
+    <div class="flex justify-between items-center px-4 md:px-16 py-3 w-full max-w-full mx-auto">
+        <div class="flex items-center gap-3 md:gap-4">
+            <img alt="Mascot" class="w-10 h-10 md:w-14 md:h-14 rounded-full sticker-border hidden sm:block bg-white"
+                 src="https://lh3.googleusercontent.com/aida/ADBb0ui0V5hyJ4LKbmlRdKH5X_RqRCugYELRGY8eBAIvuLu429nejk93_NBDXzDMwuB4XxOHV1hzHSp1x7Clz2vyVMABBenUmmIqLUaWrA9LHnyNUQ63k7yK6QlRq3FJZAQCU3Y36nTxrE4zVrl17cdBxjPRG2FgkAS8qI4wRtBiiMrfY90CPMTsmHPulP-vqdhGURM8ugNzC8V2yQ1k1PZ2dUcwY0TMFWfWtHKo_Liz1v_-nbSMrXRbRHwyJnM"/>
+            <img alt="IT'S STATIC" class="h-10 md:h-14 filter drop-shadow-[2px_2px_0px_#000]"
+                 src="https://lh3.googleusercontent.com/aida/ADBb0uhqB2RSMzGaKnMznnykCI_3KjTl3OfTCYXSIgIhCtKhCVmo5FW8eLo22NLSIB_6alM_gJq2kkgsYuJROPspSSpgI1c2IOxpAeYOjO6SGJON2l3fCMeS_oARBEskmcp4pydRib_kXYoDbjUsxx0ZtfCB0qEDA5o1LTxCr6VlYmGaadxQV3XV-dw1a6S8kCjM89pWoG-CuqR1ZeSpTYpHwzdBVdpDIMmvUKbJwKPH2Vq_VrR6s5ShN7jU0Io"/>
+        </div>
+        <button onclick="openPopup()" class="tactile-button bg-primary-container text-on-primary-container px-5 md:px-8 py-2 md:py-3 font-display-lg text-base md:text-xl rounded-xl uppercase">
+            ENLIST
+        </button>
+    </div>
+</header>
+
+<!-- ════════════════════════════════════════════════
+     HERO / MANIFESTO
+════════════════════════════════════════════════ -->
+<section class="py-12 md:py-16 px-4 md:px-16 border-b-8 border-on-surface relative">
+    <div class="max-w-7xl mx-auto z-10 relative">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+
+            <!-- Left: copy -->
+            <div class="lg:col-span-7 flex flex-col gap-6">
+                <div class="inline-block bg-tertiary-fixed text-on-tertiary-fixed px-4 md:px-6 py-2 sticker-border sticker-shadow
+                            transform -rotate-2 font-display-lg text-lg md:text-2xl uppercase tracking-tighter w-fit mobile-no-rotate">
+                    TRANSMISSION 001: WE ARE NOT A PHASE
+                </div>
+
+                <h1 class="hero-h1 font-display-lg text-5xl md:text-7xl lg:text-8xl text-on-surface leading-[0.9] tracking-tighter uppercase">
+                    WE ARE NOT <span class="text-primary">A THING.</span><br/>
+                    <span class="bg-secondary-container px-3 md:px-4 sticker-border sticker-shadow inline-block transform rotate-1 mt-2">
+                        WE ARE THE<br/>THING BEFORE THE THING.
+                    </span>
+                </h1>
+
+                <div class="bg-white p-5 md:p-8 sticker-border sticker-shadow transform rotate-1 max-w-2xl relative mobile-no-rotate">
+                    <p class="hero-manifesto font-display-lg text-xl md:text-2xl text-on-surface leading-tight mb-4 md:mb-6">
+                        YOUR CITY IS A JPEG. WE ARE THE ARTIFACT. THE COMPRESSION IS INTENTIONAL AND SO ARE YOU (PROBABLY).
+                    </p>
+                    <p class="font-body-md text-base md:text-lg text-on-surface-variant italic font-bold uppercase tracking-wide">
+                        Transmitting vibes. Recalibrating souls. Digitising the asphalt frequency since before you were aware of it.
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap gap-4 mt-4">
+                    <button onclick="openPopup()" class="btn-join tactile-button bg-tertiary-fixed text-on-tertiary-fixed px-8 md:px-12 py-4 md:py-6 font-display-lg text-xl md:text-2xl rounded-2xl flex items-center gap-3">
+                        JOIN THE STATIC
+                        <span class="material-symbols-outlined text-2xl md:text-3xl">bolt</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right: image -->
+            <div class="lg:col-span-5 relative mt-6 lg:mt-0">
+                <div class="aspect-square pop-gradient-2 rounded-[32px] md:rounded-[40px] sticker-border sticker-shadow relative overflow-hidden transform rotate-2 md:rotate-3 floating-sticker">
+                    <img alt="Character Group" class="w-full h-full object-cover mix-blend-multiply opacity-90"
+                         src="https://lh3.googleusercontent.com/aida/ADBb0uirIUHId2vWy_ZuDIKru2r4_Fu07vZ2L2jPDBlqnH4G6hYQ_MQ4Lgmktgtt8L7upxugiN4VEth6s4AE7ajqOlQSTxTOp5sB3GJ7m4N6NaieAgcYpMxtt1xeh2LfP_HZ3EgCK25JvKGUYdvRBJAkoBnnWozN_TDG0CU53N9uSCJ2b2OwvU_XU7Xhrsot_lUsHlETw_qZPoZI0S5MDQIYeKxKDc71BfzNxlu2DzsQR_EDgRGQUbCn4hYk08o"/>
+                </div>
+                <!-- Floating stickers — hidden on very small screens to avoid bleed -->
+                <div class="hidden sm:block absolute -top-10 -right-4 md:-right-6 bg-primary-container p-3 md:p-4 sticker-border sticker-shadow transform -rotate-12 font-display-lg text-2xl md:text-4xl text-on-primary-container z-20">
+                    ECSTATIC!
+                </div>
+                <div class="hidden sm:block absolute -bottom-8 -left-4 md:-left-6 bg-on-surface text-secondary-container p-3 md:p-4 sticker-border sticker-shadow transform rotate-6 font-display-lg text-lg md:text-2xl z-20 uppercase">
+                    NO BOTS allowed.
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     UNPACKING THE STATIC
+════════════════════════════════════════════════ -->
+<section class="py-12 md:py-16 px-4 md:px-16 bg-white border-b-8 border-on-surface relative">
+    <div class="max-w-7xl mx-auto relative z-10">
+        <div class="flex flex-col lg:flex-row gap-10 lg:gap-16">
+
+            <!-- Sticky heading -->
+            <div class="lg:w-1/3">
+                <h2 class="section-h2 font-display-lg text-5xl md:text-7xl lg:text-8xl text-on-surface leading-[0.85] tracking-tighter lg:sticky lg:top-32 uppercase">
+                    DECODING<br/>
+                    <span class="bg-primary-container px-3 md:px-4 text-white inline-block mt-3 md:mt-4 sticker-border sticker-shadow transform -rotate-2">
+                        THE<br/>VIBE
+                    </span>
+                </h2>
+            </div>
+
+            <!-- Cards grid -->
+            <div class="lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
+
+                <div class="bg-white sticker-border sticker-shadow p-6 md:p-8 flex flex-col gap-4 md:gap-6 floating-sticker transform rotate-1">
+                    <span class="material-symbols-outlined text-5xl md:text-6xl text-primary">location_away</span>
+                    <h3 class="font-display-lg text-3xl md:text-4xl uppercase">01. HYPER-LOCATE</h3>
+                    <p class="font-body-lg text-lg md:text-xl">Mark the unmarkable. Presence is protocol. Your footprint is a declaration of something. We're not saying what. You know. (You don't know.)</p>
+                </div>
+
+                <div class="bg-on-surface text-white sticker-border sticker-shadow p-6 md:p-8 flex flex-col gap-4 md:gap-6 floating-sticker transform -rotate-1">
+                    <span class="material-symbols-outlined text-5xl md:text-6xl text-secondary-container">vocal_soft</span>
+                    <h3 class="font-display-lg text-3xl md:text-4xl text-secondary-container uppercase">02. EMIT NOISE</h3>
+                    <p class="font-body-lg text-lg md:text-xl opacity-90">It's not a message. It's a frequency. Curated disruption delivered at the velocity of a feeling you can't name. The signal is the noise. The noise is the signal. Both are correct.</p>
+                </div>
+
+                <div class="pop-gradient-3 sticker-border sticker-shadow p-6 md:p-8 flex flex-col gap-4 md:gap-6 floating-sticker transform -rotate-2">
+                    <span class="material-symbols-outlined text-5xl md:text-6xl text-on-tertiary-container">diversity_3</span>
+                    <h3 class="font-display-lg text-3xl md:text-4xl uppercase">03. CONVERGE PHYSICALLY</h3>
+                    <p class="font-body-lg text-lg md:text-xl">From digital ping to IRL impact. Bodies in a space. A space that used to be a different kind of space. We don't do RSVPs. We do arrivals. Sudden ones.</p>
+                </div>
+
+                <div class="pop-gradient-2 sticker-border sticker-shadow p-6 md:p-8 flex flex-col gap-4 md:gap-6 floating-sticker transform rotate-2">
+                    <span class="material-symbols-outlined text-5xl md:text-6xl text-primary">shield_person</span>
+                    <h3 class="font-display-lg text-3xl md:text-4xl text-primary uppercase">04. PROTECT THE FREQUENCY</h3>
+                    <p class="font-body-lg text-lg md:text-xl">Not everyone can hear it. Not everyone should. We don't gatekeep but we do vibekeep. There's a difference. Nobody knows what it is. That's the point.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     SQUAD PROTOCOLS — bento grid
+════════════════════════════════════════════════ -->
+<section class="py-12 md:py-16 px-4 md:px-16">
+    <div class="max-w-7xl mx-auto">
+
+        <div class="flex flex-col md:flex-row items-start md:items-end justify-between mb-10 md:mb-16 gap-4">
+            <h2 class="bento-h2 font-display-lg text-4xl md:text-6xl lg:text-7xl bg-tertiary-fixed px-5 md:px-8 py-3 md:py-4 sticker-border sticker-shadow transform rotate-1 uppercase tracking-tighter">
+                STATIC FORMATS
+            </h2>
+            <div class="font-display-lg text-base md:text-xl uppercase tracking-widest text-primary">
+                / CHOOSE YOUR FREQUENCY /
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+
+            <div class="lg:col-span-2 pop-gradient-1 rounded-[32px] md:rounded-[40px] p-6 md:p-8 sticker-border sticker-shadow relative overflow-hidden group cursor-pointer border-8 border-on-surface h-72 md:h-[400px] flex flex-col justify-between">
+                <div class="relative z-10">
+                    <div class="flex justify-between items-start">
+                        <span class="material-symbols-outlined text-6xl md:text-7xl text-on-surface mb-4 md:mb-6">nightlife</span>
+                        <img alt="mascot" class="w-16 md:w-24 h-16 md:h-24 transform -rotate-12"
+                             src="https://lh3.googleusercontent.com/aida/ADBb0ui0V5hyJ4LKbmlRdKH5X_RqRCugYELRGY8eBAIvuLu429nejk93_NBDXzDMwuB4XxOHV1hzHSp1x7Clz2vyVMABBenUmmIqLUaWrA9LHnyNUQ63k7yK6QlRq3FJZAQCU3Y36nTxrE4zVrl17cdBxjPRG2FgkAS8qI4wRtBiiMrfY90CPMTsmHPulP-vqdhGURM8ugNzC8V2yQ1k1PZ2dUcwY0TMFWfWtHKo_Liz1v_-nbSMrXRbRHwyJnM"/>
+                    </div>
+                    <h3 class="font-display-lg text-3xl md:text-5xl uppercase leading-none">THE DARK<br/>FREQUENCY</h3>
+                    <p class="font-body-md text-sm md:text-base text-on-surface-variant mt-2 uppercase">It happens after the city forgets it's awake. You bring your presence. We bring the static. Nobody asks questions. Especially not you.</p>
+                </div>
+                <div class="relative z-10">
+                    <button onclick="openPopup()" class="tactile-button bg-white text-on-surface font-display-lg text-lg md:text-2xl py-3 md:py-4 px-6 md:px-8 rounded-2xl uppercase">TUNE IN</button>
+                </div>
+                <div class="absolute bottom-4 right-8 font-display-lg text-7xl md:text-9xl opacity-10 pointer-events-none uppercase">DARK</div>
+            </div>
+
+            <div class="pop-gradient-3 rounded-[32px] md:rounded-[40px] p-6 md:p-8 sticker-border sticker-shadow relative overflow-hidden group cursor-pointer flex flex-col justify-between border-8 border-on-surface h-72 md:h-[400px]">
+                <div class="relative z-10">
+                    <span class="material-symbols-outlined text-6xl md:text-7xl text-on-surface mb-4 md:mb-6">terminal</span>
+                    <h3 class="font-display-lg text-3xl md:text-4xl uppercase leading-tight">BRAIN<br/>STATIC</h3>
+                    <p class="font-body-md text-xs text-on-surface-variant mt-2 uppercase">We discuss things. Important things. Possibly made-up things. The line is the point.</p>
+                </div>
+                <div class="bg-white px-4 py-2 font-display-lg text-base md:text-lg sticker-border rounded-xl transform -rotate-3 text-center uppercase w-fit">
+                    THINK HARD
+                </div>
+            </div>
+
+            <div class="pop-gradient-2 rounded-[32px] md:rounded-[40px] p-6 md:p-8 sticker-border sticker-shadow relative overflow-hidden group cursor-pointer flex flex-col justify-between border-8 border-on-surface h-72 md:h-[400px]">
+                <div class="relative z-10">
+                    <span class="material-symbols-outlined text-6xl md:text-7xl text-on-surface mb-4 md:mb-6">sprint</span>
+                    <h3 class="font-display-lg text-3xl md:text-4xl uppercase leading-tight">BODY<br/>PROTOCOL</h3>
+                    <p class="font-body-md text-xs text-on-surface-variant mt-2 uppercase">Move your body. Through a city. With intention. Or without. The movement is the manifesto.</p>
+                </div>
+                <div class="bg-white px-4 py-2 font-display-lg text-base md:text-lg sticker-border rounded-xl transform rotate-3 text-center uppercase w-fit">
+                    JUST MOVE
+                </div>
+            </div>
+
+            <div class="lg:col-span-4 bg-on-surface rounded-[32px] md:rounded-[40px] p-8 md:p-10 sticker-border sticker-shadow relative overflow-hidden group cursor-pointer flex flex-col md:flex-row items-start md:items-center justify-between border-8 border-on-surface gap-6 md:gap-8">
+                <div class="relative z-10 text-secondary-container">
+                    <h3 class="font-display-lg text-4xl md:text-6xl mb-3 md:mb-4 uppercase tracking-tighter">CONSUME THE STATIC</h3>
+                    <p class="font-display-lg text-xl md:text-2xl italic text-white/80 max-w-2xl">EATING IS POLITICAL. EATING IS ALSO JUST EATING. WE DO BOTH. SIMULTANEOUSLY. AT A TABLE THAT MAY OR MAY NOT EXIST.</p>
+                </div>
+                <div class="flex relative z-10 gap-5 md:gap-8">
+                    <div class="w-24 h-24 md:w-32 md:h-32 bg-primary-container rounded-[24px] md:rounded-[30px] sticker-border flex items-center justify-center transform rotate-12 sticker-shadow">
+                        <span class="material-symbols-outlined text-5xl md:text-7xl text-white">restaurant</span>
+                    </div>
+                    <div class="w-24 h-24 md:w-32 md:h-32 bg-tertiary-fixed rounded-[24px] md:rounded-[30px] sticker-border flex items-center justify-center transform -rotate-6 sticker-shadow">
+                        <img alt="pop mascot small" class="w-16 md:w-20 h-16 md:h-20"
+                             src="https://lh3.googleusercontent.com/aida/ADBb0ui0V5hyJ4LKbmlRdKH5X_RqRCugYELRGY8eBAIvuLu429nejk93_NBDXzDMwuB4XxOHV1hzHSp1x7Clz2vyVMABBenUmmIqLUaWrA9LHnyNUQ63k7yK6QlRq3FJZAQCU3Y36nTxrE4zVrl17cdBxjPRG2FgkAS8qI4wRtBiiMrfY90CPMTsmHPulP-vqdhGURM8ugNzC8V2yQ1k1PZ2dUcwY0TMFWfWtHKo_Liz1v_-nbSMrXRbRHwyJnM"/>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     ★ NEW: GUESS THE STATIC — WIN AN EXOTIC TRIP ★
+════════════════════════════════════════════════ -->
+<section id="guess-the-static" class="py-12 md:py-20 px-4 md:px-16 bg-on-surface border-y-8 border-on-surface relative">
+
+    <!-- Decorative background text -->
+    <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+        <span class="font-display-lg text-[20vw] font-black text-white/5 uppercase tracking-tighter whitespace-nowrap">GUESS</span>
+    </div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+
+        <!-- Header -->
+        <div class="flex flex-col items-center text-center gap-6 mb-14 md:mb-20">
+            <span class="guess-tape text-on-tertiary-fixed">INTEL DROP 002</span>
+
+            <h2 class="guess-h2 font-display-lg text-5xl md:text-7xl lg:text-8xl text-white leading-[0.88] tracking-tighter uppercase">
+                CRACK THE CODE.<br/>
+                <span class="text-tertiary-fixed">WIN THE WORLD.</span>
+            </h2>
+
+            <p class="font-body-lg text-lg md:text-xl text-white/70 max-w-2xl uppercase tracking-wide">
+                Think you know what <strong class="text-secondary-container">iStatic</strong> is actually about?<br class="hidden md:block"/>
+                Submit your theory. The sharpest mind wins an all-expenses-paid trip to an exotic destination — chosen by the squad.
+            </p>
+
+            <!-- Prize badges row -->
+            <div class="flex flex-wrap justify-center gap-3 mt-2">
+                <span class="prize-badge text-on-primary-container text-sm md:text-base">✈️ Flights Covered</span>
+                <span class="prize-badge bg-tertiary-fixed text-on-tertiary-fixed text-sm md:text-base">🏝️ Stay Covered</span>
+                <span class="prize-badge bg-secondary-container text-on-secondary-container text-sm md:text-base">🎒 Squad Travel Kit</span>
+            </div>
+        </div>
+
+        <!-- Destination teasers + Form layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+
+            <!-- Left: Destination mystery cards -->
+            <div class="lg:col-span-4 flex flex-col gap-6">
+
+                <div class="bg-white/10 border-4 border-white/20 rounded-2xl p-4 text-white">
+                    <p class="font-display-lg text-sm uppercase tracking-widest text-tertiary-fixed mb-3">/ POSSIBLE DESTINATIONS /</p>
+                    <p class="font-body-md text-white/60 text-sm uppercase mb-4">One winner. One mystery city. Could be any of these.</p>
+                </div>
+
+                <!-- Destination card 1 -->
+                <div class="dest-card pop-gradient-1 floating-sticker transform rotate-1">
+                    <div class="p-5 flex items-center gap-4">
+                        <div class="text-4xl">🇯🇵</div>
+                        <div>
+                            <p class="font-display-lg text-xl uppercase text-on-surface">TOKYO</p>
+                            <p class="font-body-md text-sm text-on-surface-variant">Urban chaos. Neon resistance.</p>
+                        </div>
+                        <div class="ml-auto bg-on-surface text-secondary-container px-3 py-1 rounded-full font-display-lg text-xs uppercase">???</div>
+                    </div>
+                </div>
+
+                <!-- Destination card 2 -->
+                <div class="dest-card pop-gradient-3 floating-sticker transform -rotate-1">
+                    <div class="p-5 flex items-center gap-4">
+                        <div class="text-4xl">🇲🇦</div>
+                        <div>
+                            <p class="font-display-lg text-xl uppercase text-on-surface">MARRAKECH</p>
+                            <p class="font-body-md text-sm text-on-surface-variant">Markets. Medinas. Movement.</p>
+                        </div>
+                        <div class="ml-auto bg-on-surface text-secondary-container px-3 py-1 rounded-full font-display-lg text-xs uppercase">???</div>
+                    </div>
+                </div>
+
+                <!-- Destination card 3 -->
+                <div class="dest-card pop-gradient-4 floating-sticker transform rotate-2">
+                    <div class="p-5 flex items-center gap-4">
+                        <div class="text-4xl">🇧🇷</div>
+                        <div>
+                            <p class="font-display-lg text-xl uppercase text-on-surface">RIO DE JANEIRO</p>
+                            <p class="font-body-md text-sm text-on-surface-variant">Street culture. Raw energy.</p>
+                        </div>
+                        <div class="ml-auto bg-on-surface text-secondary-container px-3 py-1 rounded-full font-display-lg text-xs uppercase">???</div>
+                    </div>
+                </div>
+
+                <!-- Destination card 4 -->
+                <div class="dest-card pop-gradient-2 floating-sticker transform -rotate-2">
+                    <div class="p-5 flex items-center gap-4">
+                        <div class="text-4xl">🇮🇸</div>
+                        <div>
+                            <p class="font-display-lg text-xl uppercase text-on-surface">REYKJAVIK</p>
+                            <p class="font-body-md text-sm text-on-surface-variant">Subculture capital of the North.</p>
+                        </div>
+                        <div class="ml-auto bg-on-surface text-secondary-container px-3 py-1 rounded-full font-display-lg text-xs uppercase">???</div>
+                    </div>
+                </div>
+
+                <!-- Hint sticker -->
+                <div class="bg-primary-container sticker-border sticker-shadow p-4 transform -rotate-2 mobile-no-rotate">
+                    <p class="font-display-lg text-lg uppercase text-on-primary-container leading-snug">
+                        💡 HINT: THE RIGHT ANSWER<br/>IS SOMEWHERE IN THE STATIC.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Right: Embedded Google Form -->
+            <div class="lg:col-span-8">
+
+                <!-- Form label tape -->
+                <div class="flex items-center gap-4 mb-6">
+                    <span class="guess-tape">SUBMIT YOUR THEORY</span>
+                    <span class="font-display-lg text-white/50 text-sm uppercase tracking-widest hidden sm:block">→ Google Form</span>
+                </div>
+
+                <!-- 
+                    ╔══════════════════════════════════════════════════════════╗
+                    ║  DEVELOPER NOTE                                           ║
+                    ║  Replace the src URL below with your actual Google Form  ║
+                    ║  published embed link:                                    ║
+                    ║                                                           ║
+                    ║  1. Open your Google Form                                 ║
+                    ║  2. Click Send → Embed ( </> icon )                       ║
+                    ║  3. Copy the iframe src URL                               ║
+                    ║  4. Paste it in the src attribute below                   ║
+                    ║                                                           ║
+                    ║  Example format:                                          ║
+                    ║  https://docs.google.com/forms/d/e/YOUR_FORM_ID/         ║
+                    ║  viewform?embedded=true                                   ║
+                    ╚══════════════════════════════════════════════════════════╝
+                -->
+                <div class="form-shell">
+                    <iframe
+                        src="https://docs.google.com/forms/d/e/PASTE_YOUR_FORM_ID_HERE/viewform?embedded=true"
+                        title="Guess the iStatic — Win an Exotic Trip"
+                        loading="lazy"
+                        allowfullscreen>
+                        <!-- Fallback for blocked iframes / no-JS environments -->
+                        <div class="p-8 bg-white">
+                            <p class="font-display-lg text-2xl text-on-surface uppercase mb-4">Form couldn't load.</p>
+                            <a href="https://docs.google.com/forms/d/e/PASTE_YOUR_FORM_ID_HERE/viewform"
+                               target="_blank" rel="noopener noreferrer"
+                               class="tactile-button bg-tertiary-fixed text-on-tertiary-fixed px-8 py-4 font-display-lg text-xl rounded-2xl uppercase inline-block">
+                                OPEN FORM ↗
+                            </a>
+                        </div>
+                    </iframe>
+                </div>
+
+                <!-- Open-in-new-tab fallback -->
+                <div class="mt-6 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                    <p class="font-body-md text-white/50 text-sm uppercase tracking-wide">Form not loading?</p>
+                    <a href="https://docs.google.com/forms/d/e/PASTE_YOUR_FORM_ID_HERE/viewform"
+                       target="_blank" rel="noopener noreferrer"
+                       class="tactile-button bg-white text-on-surface px-6 py-3 font-display-lg text-base rounded-xl uppercase inline-block no-underline">
+                        OPEN IN NEW TAB ↗
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Bottom rules strip -->
+        <div class="mt-14 md:mt-20 border-t-4 border-white/20 pt-6 flex flex-col sm:flex-row justify-between gap-4">
+            <p class="font-body-md text-white/40 text-sm uppercase tracking-wider">
+                Entries close when the squad says so. One submission per frequency. Winner announced via static signal.
+            </p>
+            <p class="font-body-md text-white/40 text-sm uppercase tracking-wider">
+                NO BOTS. NO STATIC. ONLY ECSTATICS.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     CTA — BOTTOM MANIFESTO (no waitlist, just vibes)
+════════════════════════════════════════════════ -->
+<section class="bg-primary-container text-on-primary-container py-12 md:py-16 px-4 md:px-16 border-y-8 border-on-surface">
+    <div class="max-w-5xl mx-auto text-center flex flex-col gap-8 md:gap-12">
+
+        <h2 class="cta-h2 font-display-lg text-5xl md:text-8xl lg:text-9xl leading-[0.88] tracking-tighter uppercase">
+            YOU EITHER<br/>GET IT<br/>
+            <span class="bg-on-surface text-secondary-container px-4 md:px-6 transform -rotate-1 inline-block mt-3 md:mt-4 sticker-border sticker-shadow mobile-no-rotate">
+                OR YOU DON'T.
+            </span>
+        </h2>
+
+        <p class="font-display-lg text-xl md:text-2xl text-on-surface uppercase tracking-wide">(Both are valid. Only one is correct. We won't say which.)</p>
+
+        <div class="flex flex-col sm:flex-row justify-center gap-4 md:gap-6">
+            <button onclick="openPopup()" class="tactile-button bg-tertiary-fixed text-on-tertiary-fixed px-10 md:px-16 py-5 md:py-7 font-display-lg text-2xl md:text-4xl rounded-2xl uppercase">
+                ENLIST ⚡
+            </button>
+            <button onclick="openPopup()" class="tactile-button bg-on-surface text-secondary-container px-10 md:px-16 py-5 md:py-7 font-display-lg text-2xl md:text-4xl rounded-2xl uppercase">
+                ALSO ENLIST
+            </button>
+        </div>
+
+        <p class="font-body-md text-sm text-on-surface/50 uppercase tracking-widest">
+            * both buttons do the same thing. we contain multitudes.
+        </p>
+
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════ -->
+<footer class="bg-surface-container-highest w-full border-t-4 border-on-surface">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center px-4 md:px-16 py-8 gap-6 w-full max-w-7xl mx-auto">
+
+        <div class="flex flex-col items-start gap-2">
+            <div class="font-display-lg text-2xl md:text-3xl text-on-surface uppercase">IT'S STATIC</div>
+            <div class="font-label-sm text-primary uppercase">Established to Disrupt.</div>
+        </div>
+
+        <nav class="flex flex-wrap gap-3 md:gap-6">
+            <a class="font-label-lg hover:text-primary transition-colors underline decoration-4 underline-offset-4" href="#">PROTOCOLS</a>
+            <a class="font-label-lg hover:text-primary transition-colors underline decoration-4 underline-offset-4" href="#">MANIFESTO</a>
+            <a class="font-label-lg hover:text-primary transition-colors underline decoration-4 underline-offset-4" href="#guess-the-static">GUESS THE STATIC</a>
+            <a class="font-label-lg hover:text-primary transition-colors underline decoration-4 underline-offset-4" href="#">PRIVACY</a>
+            <a class="font-label-lg hover:text-primary transition-colors underline decoration-4 underline-offset-4" href="#">TERMS</a>
+        </nav>
+
+        <div class="font-body-md text-primary font-bold bg-primary-fixed-dim px-4 py-2 sticker-border transform rotate-1 inline-block">
+            © 2026 IT'S STATIC. STAY ECSTATIC.
+        </div>
+
+    </div>
 </footer>
-</body></html>
+
+<script>
+    function openPopup() {
+        const p = document.getElementById('enlist-popup');
+        p.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+    function closePopup() {
+        const p = document.getElementById('enlist-popup');
+        p.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closePopup();
+    });
+</script>
+</body>
+</html>
