@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RESIST_NET | IT'S STATIC Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&amp;family=Quicksand:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#211b00",
+                        "on-surface": "#1b1b1e",
+                        "on-primary": "#ffffff",
+                        "on-background": "#1b1b1e",
+                        "primary-fixed": "#ffd8e7",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#eae7eb",
+                        "on-tertiary-fixed-variant": "#524600",
+                        "outline": "#877179",
+                        "on-primary-fixed-variant": "#811d57",
+                        "surface-container-highest": "#e4e1e6",
+                        "secondary": "#006686",
+                        "secondary-fixed-dim": "#7bd1fa",
+                        "secondary-fixed": "#c0e8ff",
+                        "surface-tint": "#9f376f",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#c7ad07",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#9f376f",
+                        "on-surface-variant": "#544249",
+                        "on-primary-container": "#791651",
+                        "surface-container": "#f0edf1",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#ffafd2",
+                        "surface-dim": "#dcd9dd",
+                        "on-secondary-fixed": "#001e2b",
+                        "surface-variant": "#e4e1e6",
+                        "inverse-surface": "#303033",
+                        "inverse-on-surface": "#f3f0f4",
+                        "surface-container-low": "#f6f2f7",
+                        "tertiary": "#6d5e00",
+                        "surface": "#fbf8fc",
+                        "on-secondary-fixed-variant": "#004d66",
+                        "tertiary-fixed": "#ffe24c",
+                        "secondary-container": "#7ed4fd",
+                        "background": "#fbf8fc",
+                        "on-secondary-container": "#005b78",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#e2c62d",
+                        "primary-fixed-dim": "#ffafd2",
+                        "primary-container": "#ff85c1",
+                        "surface-bright": "#fbf8fc",
+                        "on-tertiary-container": "#4c4100",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#d9c0c9",
+                        "on-primary-fixed": "#3d0025"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "12px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "stack-md": "24px",
+                        "stack-lg": "48px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Bricolage Grotesque"],
+                        "body-md": ["Quicksand"],
+                        "label-sm": ["Quicksand"],
+                        "headline-lg": ["Bricolage Grotesque"],
+                        "headline-lg-mobile": ["Bricolage Grotesque"],
+                        "label-lg": ["Quicksand"],
+                        "headline-md": ["Bricolage Grotesque"],
+                        "body-lg": ["Quicksand"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["56px", {"lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "500"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .neo-brutal-border {
+            border: 4px solid #1b1b1e;
+        }
+        .neo-brutal-shadow {
+            box-shadow: 6px 6px 0px 0px #1b1b1e;
+        }
+        .neo-brutal-shadow-sm {
+            box-shadow: 4px 4px 0px 0px #1b1b1e;
+        }
+        .neo-brutal-shadow-hover:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px 0px #1b1b1e;
+        }
+        .neo-brutal-shadow-active:active {
+            transform: translate(4px, 4px);
+            box-shadow: 0px 0px 0px 0px #1b1b1e;
+        }
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #fbf8fc;
+            overflow: hidden;
+        }
+        .bricolage {
+            font-family: 'Bricolage Grotesque', sans-serif;
+        }
+        
+        /* Interactive Map Stylized Tiles */
+        .map-bg {
+            background-color: #f6f2f7;
+            background-image: 
+                radial-gradient(#d9c0c9 1px, transparent 1px),
+                linear-gradient(to right, #e4e1e6 1px, transparent 1px),
+                linear-gradient(to bottom, #e4e1e6 1px, transparent 1px);
+            background-size: 40px 40px, 100px 100px, 100px 100px;
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating-marker {
+            animation: float 3s ease-in-out infinite;
+            cursor: pointer;
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .floating-marker:hover {
+            transform: scale(1.1) rotate(2deg);
+            z-index: 50;
+        }
+    </style>
+</head>
+<body class="h-screen w-full flex flex-col">
+<!-- Header -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop py-4 bg-surface border-b-4 border-on-surface shadow-[4px_4px_0px_0px_rgba(27,27,30,1)]">
+<div class="flex items-center gap-4">
+<img alt="IT'S STATIC Logo" class="h-12 w-12 rounded-full border-2 border-on-surface" src="https://lh3.googleusercontent.com/aida/ADBb0ui0V5hyJ4LKbmlRdKH5X_RqRCugYELRGY8eBAIvuLu429nejk93_NBDXzDMwuB4XxOHV1hzHSp1x7Clz2vyVMABBenUmmIqLUaWrA9LHnyNUQ63k7yK6QlRq3FJZAQCU3Y36nTxrE4zVrl17cdBxjPRG2FgkAS8qI4wRtBiiMrfY90CPMTsmHPulP-vqdhGURM8ugNzC8V2yQ1k1PZ2dUcwY0TMFWfWtHKo_Liz1v_-nbSMrXRbRHwyJnM"/>
+<h1 class="font-display-lg text-display-lg italic uppercase tracking-tighter text-primary">RESIST_NET</h1>
+</div>
+<div class="hidden md:flex items-center gap-6">
+<button class="material-symbols-outlined text-primary p-2 neo-brutal-shadow-hover transition-all" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-primary p-2 neo-brutal-shadow-hover transition-all" data-icon="wifi_tethering">wifi_tethering</button>
+<button class="material-symbols-outlined text-primary p-2 neo-brutal-shadow-hover transition-all" data-icon="settings">settings</button>
+<div class="flex items-center gap-3 ml-4 bg-primary-fixed border-2 border-on-surface px-4 py-2 rounded-lg">
+<span class="font-label-lg text-on-primary-fixed uppercase">COMMANDER_01</span>
+<img alt="Commander Profile" class="h-8 w-8 rounded-full border-2 border-on-surface" src="https://lh3.googleusercontent.com/aida/ADBb0ui0V5hyJ4LKbmlRdKH5X_RqRCugYELRGY8eBAIvuLu429nejk93_NBDXzDMwuB4XxOHV1hzHSp1x7Clz2vyVMABBenUmmIqLUaWrA9LHnyNUQ63k7yK6QlRq3FJZAQCU3Y36nTxrE4zVrl17cdBxjPRG2FgkAS8qI4wRtBiiMrfY90CPMTsmHPulP-vqdhGURM8ugNzC8V2yQ1k1PZ2dUcwY0TMFWfWtHKo_Liz1v_-nbSMrXRbRHwyJnM"/>
+</div>
+</div>
+</header>
+<!-- Sidebar -->
+<aside class="fixed left-0 top-0 h-full w-80 bg-secondary-container flex flex-col z-40 border-r-4 border-on-surface shadow-[8px_0px_0px_0px_rgba(0,102,134,1)] pt-24 pb-8 overflow-y-auto">
+<div class="px-6 mb-8">
+<div class="bg-surface neo-brutal-border p-4 neo-brutal-shadow-sm rounded-xl">
+<h2 class="font-headline-md text-headline-md font-black text-on-surface uppercase">OPERATIONS</h2>
+<p class="font-label-sm text-on-surface-variant">Active Nodes: 1,204</p>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-2 px-4">
+<a class="bg-tertiary-fixed text-on-tertiary-fixed border-2 border-on-surface shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rounded-lg flex items-center gap-3 p-4 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all active:translate-y-1" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-lg text-label-lg uppercase">Squads</span>
+</a>
+<a class="flex items-center gap-3 p-4 text-on-secondary-container font-bold hover:bg-primary-container hover:text-on-primary-container rounded-lg transition-all active:translate-y-1" href="#">
+<span class="material-symbols-outlined" data-icon="celebration">celebration</span>
+<span class="font-label-lg text-label-lg uppercase">Host Party</span>
+</a>
+<a class="flex items-center gap-3 p-4 text-on-secondary-container font-bold hover:bg-primary-container hover:text-on-primary-container rounded-lg transition-all active:translate-y-1" href="#">
+<span class="material-symbols-outlined" data-icon="sensors">sensors</span>
+<span class="font-label-lg text-label-lg uppercase">Signals</span>
+</a>
+<a class="flex items-center gap-3 p-4 text-on-secondary-container font-bold hover:bg-primary-container hover:text-on-primary-container rounded-lg transition-all active:translate-y-1" href="#">
+<span class="material-symbols-outlined" data-icon="Article">article</span>
+<span class="font-label-lg text-label-lg uppercase">Intel</span>
+</a>
+</nav>
+<div class="mt-8 px-4 flex flex-col gap-6">
+<div class="border-t-4 border-on-surface pt-6">
+<h3 class="font-headline-md text-headline-md mb-4 uppercase bricolage">Squads Nearby</h3>
+<div class="space-y-4">
+<div class="bg-surface-container neo-brutal-border p-3 neo-brutal-shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="h-10 w-10 bg-tertiary rounded-full border-2 border-on-surface"></div>
+<span class="font-label-lg">Neon Riders</span>
+</div>
+<button class="bg-primary text-on-primary border-2 border-on-surface px-3 py-1 font-label-sm neo-brutal-shadow-sm active:translate-y-0.5 active:shadow-none uppercase">JOIN</button>
+</div>
+<div class="bg-surface-container neo-brutal-border p-3 neo-brutal-shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="h-10 w-10 bg-secondary rounded-full border-2 border-on-surface"></div>
+<span class="font-label-lg">Static Glitch</span>
+</div>
+<button class="bg-primary text-on-primary border-2 border-on-surface px-3 py-1 font-label-sm neo-brutal-shadow-sm active:translate-y-0.5 active:shadow-none uppercase">JOIN</button>
+</div>
+</div>
+</div>
+<button class="bg-tertiary-container text-on-tertiary-container neo-brutal-border neo-brutal-shadow py-4 px-6 font-display-lg text-headline-md uppercase hover:bg-tertiary-fixed transition-colors active:translate-y-1 active:shadow-none">
+                DEPLOY SIGNAL
+            </button>
+</div>
+</aside>
+<!-- Main Map Container -->
+<main class="flex-1 ml-80 relative mt-20 overflow-hidden cursor-grab active:cursor-grabbing" id="map-area">
+<!-- Stylized Interactive Map Background -->
+<div class="map-bg" id="map-canvas">
+<!-- Simulated Map Roads/Paths -->
+<svg class="absolute inset-0 w-full h-full opacity-20" xmlns="http://www.w3.org/2000/svg">
+<path d="M-100 200 L1200 400 M400 -100 L600 1200 M800 100 L200 900" fill="none" stroke="#1b1b1e" stroke-width="60"></path>
+<circle cx="300" cy="300" fill="none" r="150" stroke="#1b1b1e" stroke-width="40"></circle>
+<rect fill="none" height="300" rx="20" stroke="#1b1b1e" stroke-width="40" width="200" x="700" y="500"></rect>
+</svg>
+</div>
+<!-- Floating UI Overlay Content -->
+<div class="absolute inset-0 pointer-events-none">
+<!-- Map Markers (Interactive) -->
+<div class="absolute top-[25%] left-[45%] floating-marker pointer-events-auto" style="animation-delay: 0s;">
+<div class="bg-primary-container neo-brutal-border p-2 neo-brutal-shadow flex flex-col items-center gap-2 rounded-xl">
+<div class="flex items-center gap-2 px-2">
+<img alt="User" class="w-8 h-8 rounded-full border-2 border-on-surface" src="https://lh3.googleusercontent.com/aida/ADBb0ui0V5hyJ4LKbmlRdKH5X_RqRCugYELRGY8eBAIvuLu429nejk93_NBDXzDMwuB4XxOHV1hzHSp1x7Clz2vyVMABBenUmmIqLUaWrA9LHnyNUQ63k7yK6QlRq3FJZAQCU3Y36nTxrE4zVrl17cdBxjPRG2FgkAS8qI4wRtBiiMrfY90CPMTsmHPulP-vqdhGURM8ugNzC8V2yQ1k1PZ2dUcwY0TMFWfWtHKo_Liz1v_-nbSMrXRbRHwyJnM"/>
+<span class="font-label-lg text-on-primary-container uppercase bricolage">K-POP VIBES</span>
+</div>
+<div class="bg-surface px-4 py-1 border-2 border-on-surface rounded-full text-label-sm">4 / 10 active</div>
+</div>
+<div class="w-1 h-8 bg-on-surface mx-auto"></div>
+<div class="w-4 h-2 bg-on-surface opacity-30 rounded-full mx-auto"></div>
+</div>
+<div class="absolute top-[55%] left-[20%] floating-marker pointer-events-auto" style="animation-delay: -1.5s;">
+<div class="bg-tertiary-fixed neo-brutal-border p-2 neo-brutal-shadow flex flex-col items-center gap-2 rounded-xl">
+<div class="flex items-center gap-2 px-2">
+<div class="w-8 h-8 rounded-full border-2 border-on-surface bg-secondary"></div>
+<span class="font-label-lg text-on-tertiary-fixed uppercase bricolage">TECH TALK</span>
+</div>
+<div class="bg-surface px-4 py-1 border-2 border-on-surface rounded-full text-label-sm">8 / 15 active</div>
+</div>
+<div class="w-1 h-8 bg-on-surface mx-auto"></div>
+<div class="w-4 h-2 bg-on-surface opacity-30 rounded-full mx-auto"></div>
+</div>
+<div class="absolute bottom-[35%] right-[35%] floating-marker pointer-events-auto" style="animation-delay: -0.8s;">
+<div class="bg-secondary-container neo-brutal-border p-2 neo-brutal-shadow flex flex-col items-center gap-2 rounded-xl">
+<div class="flex items-center gap-2 px-2">
+<div class="w-8 h-8 rounded-full border-2 border-on-surface bg-primary"></div>
+<span class="font-label-lg text-on-secondary-container uppercase bricolage">ROOFTOP BEATS</span>
+</div>
+<div class="bg-surface px-4 py-1 border-2 border-on-surface rounded-full text-label-sm">12 / 20 active</div>
+</div>
+<div class="w-1 h-8 bg-on-surface mx-auto"></div>
+<div class="w-4 h-2 bg-on-surface opacity-30 rounded-full mx-auto"></div>
+</div>
+<!-- Dashboard Panels (Overlay) -->
+<div class="absolute right-8 top-8 w-72 pointer-events-auto flex flex-col gap-6">
+<!-- YOUR PARTY -->
+<div class="bg-surface neo-brutal-border neo-brutal-shadow p-6 rounded-2xl">
+<h3 class="font-headline-md text-headline-md mb-4 bricolage uppercase">YOUR PARTY</h3>
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-3">
+<img alt="You" class="w-10 h-10 rounded-full border-2 border-on-surface" src="https://lh3.googleusercontent.com/aida/ADBb0ui0V5hyJ4LKbmlRdKH5X_RqRCugYELRGY8eBAIvuLu429nejk93_NBDXzDMwuB4XxOHV1hzHSp1x7Clz2vyVMABBenUmmIqLUaWrA9LHnyNUQ63k7yK6QlRq3FJZAQCU3Y36nTxrE4zVrl17cdBxjPRG2FgkAS8qI4wRtBiiMrfY90CPMTsmHPulP-vqdhGURM8ugNzC8V2yQ1k1PZ2dUcwY0TMFWfWtHKo_Liz1v_-nbSMrXRbRHwyJnM"/>
+<div>
+<p class="font-label-lg leading-none">Commander_01 (You)</p>
+<span class="text-[10px] text-primary font-bold uppercase">Host</span>
+</div>
+</div>
+<div class="flex items-center gap-3 opacity-60">
+<div class="w-10 h-10 rounded-full border-2 border-on-surface border-dashed flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface" data-icon="add">add</span>
+</div>
+<p class="font-label-lg italic">Waiting for crew...</p>
+</div>
+</div>
+</div>
+<!-- INCOMING -->
+<div class="bg-surface neo-brutal-border neo-brutal-shadow p-6 rounded-2xl">
+<h3 class="font-headline-md text-headline-md mb-4 bricolage uppercase">INCOMING</h3>
+<div class="space-y-4">
+<div class="bg-primary-fixed border-2 border-on-surface p-3 neo-brutal-shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full border-2 border-on-surface bg-tertiary"></div>
+<span class="font-label-lg">Zesty_Cat</span>
+</div>
+<div class="flex gap-1">
+<button class="bg-on-surface text-surface p-1 rounded hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="check">check</span>
+</button>
+<button class="bg-surface-container text-on-surface p-1 border border-on-surface rounded hover:bg-error hover:text-white transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="close">close</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Host Button FAB -->
+<button class="fixed bottom-12 right-12 bg-primary-container text-on-primary-container neo-brutal-border p-8 rounded-full neo-brutal-shadow hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all active:scale-95 z-50 flex flex-col items-center gap-2" id="fab-host">
+<span class="material-symbols-outlined text-5xl" data-icon="celebration" style="font-variation-settings: 'FILL' 1;">celebration</span>
+<span class="font-display-lg text-headline-md bricolage uppercase tracking-tight">Host Your Own Party</span>
+</button>
+</main>
+<!-- Mobile Navigation -->
+<div class="md:hidden fixed bottom-0 left-0 w-full bg-surface border-t-4 border-on-surface flex justify-around p-4 z-50">
+<button class="flex flex-col items-center text-primary">
+<span class="material-symbols-outlined" data-icon="map" style="font-variation-settings: 'FILL' 1;">map</span>
+<span class="text-xs font-bold uppercase">MAP</span>
+</button>
+<button class="flex flex-col items-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="text-xs font-bold uppercase">SQUADS</span>
+</button>
+<button class="flex flex-col items-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="message">message</span>
+<span class="text-xs font-bold uppercase">SIGNALS</span>
+</button>
+</div>
+<script>
+        // Simple Draggable Map Simulation
+        let isDragging = false;
+        let startX, startY, scrollLeft, scrollTop;
+        const mapArea = document.getElementById('map-area');
+        const mapCanvas = document.getElementById('map-canvas');
+
+        mapArea.addEventListener('mousedown', (e) => {
+            if (e.target.closest('.pointer-events-auto')) return;
+            isDragging = true;
+            startX = e.pageX - mapCanvas.offsetLeft;
+            startY = e.pageY - mapCanvas.offsetTop;
+        });
+
+        window.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = e.pageX - startX;
+            const y = e.pageY - startY;
+            mapCanvas.style.transform = `translate(${x}px, ${y}px)`;
+        });
+
+        // FAB Animation
+        document.getElementById('fab-host').addEventListener('click', () => {
+            const colors = ['#9f376f', '#006686', '#ffe24c', '#7ed4fd'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            const effect = document.createElement('div');
+            effect.style.position = 'fixed';
+            effect.style.bottom = '50px';
+            effect.style.right = '50px';
+            effect.style.width = '10px';
+            effect.style.height = '10px';
+            effect.style.borderRadius = '50%';
+            effect.style.backgroundColor = randomColor;
+            effect.style.zIndex = '100';
+            effect.style.transition = 'all 0.6s cubic-bezier(0.19, 1, 0.22, 1)';
+            document.body.appendChild(effect);
+            
+            setTimeout(() => {
+                effect.style.transform = 'scale(500)';
+                effect.style.opacity = '0';
+            }, 50);
+            
+            setTimeout(() => {
+                effect.remove();
+            }, 700);
+        });
+
+        // Hover feedback for marker interactivity
+        document.querySelectorAll('.floating-marker').forEach(marker => {
+            marker.addEventListener('click', () => {
+                alert('Join ' + marker.querySelector('.font-label-lg').innerText + '?');
+            });
+        });
+    </script>
+</body></html>
